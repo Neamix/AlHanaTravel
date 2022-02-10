@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\TravelController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,14 @@ Route::get('/travel/upsert',[TravelController::class,'upsert']);
 
 Route::group(['prefix' => 'admin'],function(){
     Route::get('/',[AdminController::class,'index']);
+
+    Route::group(['prefix' => 'travel'],function(){
+        Route::get('/',[TravelController::class,'index']);
+    });
+
+    Route::group(['prefix' => 'hotel'],function(){
+        Route::get('/',[HotelController::class,'index'])->name('hotel.index');
+        Route::post('/upsert',[HotelController::class,'upsert'])->name('hotel.upsert');
+        Route::post('/delete/{hotel}',[HotelController::class,'delete'])->name('hotel.delete');
+    });
 });
