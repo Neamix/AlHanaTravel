@@ -16,7 +16,7 @@ $('.list_general').on('click','.edit_btn',function(){
 $('.edit_form,.add_form').on('submit',function(e){
     e.preventDefault();
 
-    let create_state = ($(this).attr('data') == 'add') ? true : false; 
+    let create_state = ($(this).attr('data') == 'add') ? true : false;
 
     $.ajax({
         url: '{{route("hotel.upsert")}}',
