@@ -5,6 +5,10 @@
 Hotels
 @endsection
 
+@section('css')
+<link href="{{ asset('vendor/dropzone.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
@@ -90,5 +94,6 @@ Hotels
 @endsection
 
 @section('script')
+<script src="{{ asset('vendor/dropzone.min.js') }}"></script>
 @include('admin.js-blades.js-hotel')
 @endsection
