@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin'],function(){
 
     Route::group(['prefix' => 'hotel'],function(){
         Route::get('/',[HotelController::class,'index'])->name('hotel.index');
+        Route::get('/{hotel}',[HotelController::class,'getHotel'])->name('hotel.get');
         Route::post('/upsert',[HotelController::class,'upsert'])->name('hotel.upsert');
         Route::post('/delete/{hotel}',[HotelController::class,'delete'])->name('hotel.delete');
     });
