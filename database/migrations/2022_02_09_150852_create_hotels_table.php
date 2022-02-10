@@ -24,7 +24,6 @@ class CreateHotelsTable extends Migration
             // $table->foreignId('city_id');
             $table->string('main_image')->nullable();
             $table->string('min_days');
-            $table->integer('price');
             $table->text('description');
             $table->timestamps();
         });
