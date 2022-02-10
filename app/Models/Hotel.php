@@ -14,6 +14,17 @@ class Hotel extends Model
 
     static function upsertInstance($data) 
     {
+        $dimintionsArray = [
+            'medium' => '400X270',
+        ];
+
+        $preview = null;
+
+        if($data->main_image) {
+            $view_src = Image::storeImages([$data->main_image],$dimintionsArray);
+            $preview = ( count($view_src) )  ? Image::find($view_src[0])->src : null;
+        }
+
         $hotel = self::updateOrCreate(
             ['id' => $data->id],
             [
@@ -23,12 +34,13 @@ class Hotel extends Model
                 'phone' => $data->phone,
                 'email' => $data->email,
                 'meal_plane' => $data->meal_plane,
-                // 'main_image' => $data->main_image,
+                'main_image' => $preview,
                 'min_days' => $data->min_days,
                 'description' => $data->description,
                 'price' => $data->price
             ]
         );
+        
 
         return self::validateResult('success',$hotel);
     }
