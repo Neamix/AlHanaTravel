@@ -1,5 +1,10 @@
 @extends('admin.layouts.admin')
 
+
+@section('title')
+Hotels
+@endsection
+
 @section('content')
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">

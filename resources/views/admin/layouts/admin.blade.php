@@ -9,7 +9,6 @@
 </head>
 <body>
     @include('admin.layouts.navbar')
-    @include('admin.layouts.sidenav')
     <div class="content-wrapper">
         <div class="container-fluid">
         @yield('content')

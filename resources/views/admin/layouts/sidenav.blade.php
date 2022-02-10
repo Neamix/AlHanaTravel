@@ -7,9 +7,9 @@
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-          <a class="nav-link" href="messages.html">
+          <a class="nav-link" href="{{ route('hotel.index') }}">
             <i class="fa fa-fw fa-envelope-open"></i>
-            <span class="nav-link-text">Messages</span>
+            <span class="nav-link-text">Hotels</span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
