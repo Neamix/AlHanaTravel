@@ -27,3 +27,5 @@
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
   <!-- Your custom styles -->
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+
+  @yield('css')
