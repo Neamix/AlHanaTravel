@@ -31,4 +31,8 @@ class HotelController extends Controller
     {
         return $hotel->deleteInstance();
     }
+
+    public function getHotel(Hotel $hotel) {
+        return $hotel;
+    }
 }
