@@ -47,7 +47,7 @@ Hotels
                     </div>
                 </ul>
                 <div class="d-flex">
-                    <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#client_detail_modal">
+                    <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#client_detail_modal" hotel_id="{{ $hotel->id }}">
                         <i class="fa fa-fw fa-pencil"></i> Edit Hotel
                     </a>
 
@@ -55,21 +55,6 @@ Hotels
                         <i class="fa fa-trash"></i> Delete Hotel
                     </a>
                 </div>
-
-                <form class="info" id="{{ $hotel->id }}">
-                    <input type="hidden" value="{{ $hotel->stars }}" class="stars" name="stars">
-                    <input type="hidden" value="{{ $hotel->name }}" class="name" name="name">
-                    <input type="hidden" value="{{ $hotel->phone }}" class="phone" name="phone">
-                    <input type="hidden" value="{{ $hotel->location }}" class="location" name="location">
-                    <input type="hidden" value="{{ $hotel->meal_plane }}" class="meal_plane" name="meal_plane">
-                    <input type="hidden" value="{{ $hotel->email }}" class="email" name="email">
-                    <input type="hidden" value="{{ $hotel->id }}" class="id" name="id">
-                    <input type="hidden" value="{{ $hotel->price }}" class="price" name="price">
-                    <input type="hidden" value="{{ $hotel->description }}" class="description" name="description">
-                    <input type="hidden" value="{{ $hotel->min_days }}" class="min_days" name="min_days">
-                    <input type="hidden" value="{{ $hotel->main_image }}" class="main_image" name="main_image">
-                </form>
-
             </li>
             @endforeach
         </ul>

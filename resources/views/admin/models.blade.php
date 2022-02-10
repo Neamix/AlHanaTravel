@@ -53,12 +53,38 @@
                             <p class="error error_stars"></p>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Price</label>
-                            <input type="number" class="form-control date-pick input_price" value="" name="price">
-                            <p class="error error_price"></p>
+                    <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Prices</label>
+                        <div class="price_list">
+                            <Div class="row price">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control date-pick input_price_key" value="" name="price_key" placeholder="Value">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control date-pick input_price_val" value="" name="price_value" placeholder="Price">
+                                        </div>
+                                    </div>
+                                </div>
+                            </Div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="add_new_price btn_1 gray mt-3" form_class="edit_form"><i class="fa fa-plus"></i>Add new price</div>
+                        </div>
+                        <table class="table mt-3 price_table">
+                            <tr>
+                                <th scope="col">Value</th>
+                                <th scope="col">Price</th>
+                                <th scope="col"></th>
+                            </tr>
+                            <tr scope="row" class="table_columns">
+                                <td class="empty_val text-center" colspan="3">No data to show</td>
+                            </tr>
+                        </table>
+                        <p class="error error_price"></p>
+                    </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -68,11 +94,11 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label>View Image</label>
-                            <input type="file" class="form-control date-pick input_main_image" value="" name="main_image">
+                            <input type="file" class="form-control date-pick" value="" name="main_image">
                             <p class="error error_stars"></p>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
@@ -171,10 +197,36 @@
                             <p class="error error_stars"></p>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label>Price</label>
-                            <input type="number" class="form-control date-pick input_price" value="" name="price">
+                            <label>Prices</label>
+                            <div class="price_list">
+                                <Div class="row price">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control date-pick input_price_key" value="" name="price_key" placeholder="Value">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="number" class="form-control date-pick input_price_val" value="" name="price_value" placeholder="Price">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="add_new_price btn_1 gray mt-3" form_class=".add_form"><i class="fa fa-plus"></i>Add new price</div>
+                            </div>
+                            <table class="table mt-3 price_table">
+                                <tr>
+                                    <th scope="col">Value</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col"></th>
+                                </tr>
+                                <tr scope="row" class="table_columns">
+                                    <td class="empty_val text-center" colspan="3">No data to show</td>
+                                </tr>
+                            </table>
                             <p class="error error_price"></p>
                         </div>
                     </div>
@@ -186,11 +238,11 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label>View Image</label>
                             <input type="file" class="form-control date-pick input_main_image" value="" name="main_image">
                             <p class="error error_stars"></p>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
