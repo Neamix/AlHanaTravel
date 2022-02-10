@@ -33,7 +33,17 @@ class HotelRequest extends FormRequest
             'name' => ['required'],
             'description' => ['required'],
             'min_days' => ['required'],
-            'price' => ['required']
+            'price' => [function($value,$attribute,$fail){
+                $prices = json_decode($this->price,true);
+
+                if( ! count($prices) ) {
+                    return $fail('You have to add at least one price quota');
+                }
+
+                foreach($prices as $price) {
+                    
+                }
+            }]
         ];
     }
 }
