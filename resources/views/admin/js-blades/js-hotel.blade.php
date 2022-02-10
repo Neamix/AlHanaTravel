@@ -1,4 +1,8 @@
 <script>
+$('.input_gallary_image').on('change',function(){
+    console.log($(this).files);
+});
+
 $('.list_general').on('click','.edit_btn',function(){
     let info_form = $(this).parent().siblings($('form.info')).serializeArray();
     for(info_key in info_form) {
@@ -11,25 +15,15 @@ $('.list_general').on('click','.edit_btn',function(){
 
 $('.edit_form,.add_form').on('submit',function(e){
     e.preventDefault();
-    let info_form = {
-        'id': $(this).find(".input_id").val(),
-        'name': $(this).find(".input_name").val(),
-        'phone': $(this).find(".input_phone").val(),
-        'email': $(this).find(".input_email").val(),
-        'location': $(this).find(".input_location").val(),
-        'meal_plane': $(this).find(".input_meal_plane").val(),
-        'stars': $(this).find(".input_stars").val(),
-        'price': $(this).find(".input_price").val(),
-        'min_days': $(this).find(".input_min_days").val(),
-        'main_image': $(this).find(".input_main_image").val(),
-        'description': $(this).find(".input_description").val(),
-    };
+
     let create_state = ($(this).attr('data') == 'add') ? true : false; 
-    console.log(info_form);
+
     $.ajax({
         url: '{{route("hotel.upsert")}}',
         type: 'post',
-        data: info_form,
+        data: new FormData(this),
+        contentType: false,
+        processData: false,
         success: (event) => {
             let payload = event.payload;
             $('.out_content').addClass('d-none');
@@ -129,7 +123,6 @@ $('.edit_form,.add_form').on('submit',function(e){
             let errors = error_bag.responseJSON.errors;
             $(this).find('.error').text('');
             for (error in errors ) {
-                console.log($(this).find(`p.error_${error}`),`p.error_${error}`);
                 $(this).find(`p.error_${error}`).text(errors[error]);
             }
         }
