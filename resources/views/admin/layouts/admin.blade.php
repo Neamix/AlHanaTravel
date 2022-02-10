@@ -12,9 +12,12 @@
     @include('admin.layouts.sidenav')
     <div class="content-wrapper">
         <div class="container-fluid">
-    @yield('content')
+        @yield('content')
         </div>
     </div>
+    <footer>
+    @include('admin.layouts.footer')
     @yield('script')
+    </footer>
 </body>
 </html>

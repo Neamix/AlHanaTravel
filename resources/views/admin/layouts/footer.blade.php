@@ -10,5 +10,6 @@
     <script src="{{ asset('vendor/jquery.magnific-popup.min.js') }}"></script>
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/admin.js') }}"></script>
+<script src="{{ asset('js/initFunc.js') }}"></script>
 <!-- Custom scripts for this page-->
 <script src="{{ asset('vendor/dropzone.min.js') }}"></script>
