@@ -262,3 +262,58 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="add_new_city" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true" data="add>
+    <div class="modal-dialog wide"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="client_detail_modalLabel">Add new city</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="add_city_form">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>City name</label>
+                            <input type="text" class="form-control date-pick input_name" value="" name="name">
+                            <p class="error error_city"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" href="#0">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="edit_city" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true" data="edit">
+    <div class="modal-dialog wide"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="client_detail_modalLabel">Edit city</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="edit_city_form">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>City name</label>
+                            <input type="text" class="form-control date-pick input_name" value="" name="name">
+                            <input type="hidden" class="form-control date-pick input_id" value="" name="id">
+                            <p class="error error_name"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" href="#0">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
