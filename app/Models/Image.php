@@ -20,7 +20,7 @@ class Image extends Model
             foreach($dimintionsArray as $key => $dimintion)
             {
                 $dimintion = explode('X',$dimintion);
-                $src = public_path('hotels')."/$key/".$name;
+                $src = "/$key/".$name;
                 self::resize($image,$dimintion)->save(public_path('hotels')."/$key/".$name);
                 
                 $imageInstance = self::create([

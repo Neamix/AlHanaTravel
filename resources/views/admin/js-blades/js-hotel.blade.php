@@ -111,16 +111,18 @@ $('.edit_form,.add_form').on('submit',function(e){
                         <h4>${payload.name}</h4>
                         <ul class="booking_list">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <img src="{{ asset('hotels/') }}${payload.main_image}" class="w-100 preview">
+                                </div>
+                                <div class="col-md-4">
                                     <li><strong>Stars</strong> ${payload.stars} Stars</li>
                                     <li><strong>Meal Plane</strong>${payload.meal_plane}</li>
                                     <li><strong>Location</strong>${payload.location}</li>
                                     <li><strong>Min Days</strong>${payload.min_days} Days</li>
                                 </div>
-                                <div class="col-md-6">
-                                    <li><strong>Phone</strong> ${payload.phone}</li>
+                                <div class="col-md-5">
+                                    <li><strong>Phone</strong>${payload.phone}</li>
                                     <li><strong>Email Address</strong>${payload.email}</li>
-                                    <li><strong>Price</strong>${payload.price} LE</li>
                                 </div>
                             </div>
                         </ul>
@@ -142,16 +144,18 @@ $('.edit_form,.add_form').on('submit',function(e){
                 <h4>${payload.name}</h4>
                         <ul class="booking_list">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <img src="{{ asset('hotels/') }}${payload.main_image}" class="w-100 preview">
+                                </div>
+                                <div class="col-md-4">
                                     <li><strong>Stars</strong> ${payload.stars} Stars</li>
                                     <li><strong>Meal Plane</strong>${payload.meal_plane}</li>
                                     <li><strong>Location</strong>${payload.location}</li>
-                                    <li><strong>Min Days</strong>${payload.min_days}</li>
+                                    <li><strong>Min Days</strong>${payload.min_days} Days</li>
                                 </div>
-                                <div class="col-md-6">
-                                    <li><strong>Phone</strong> ${payload.phone}</li>
+                                <div class="col-md-5">
+                                    <li><strong>Phone</strong>${payload.phone}</li>
                                     <li><strong>Email Address</strong>${payload.email}</li>
-                                    <li><strong>Price</strong>${payload.price}</li>
                                 </div>
                             </div>
                         </ul>

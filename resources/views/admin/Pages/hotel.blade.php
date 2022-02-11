@@ -33,16 +33,18 @@ Hotels
                 <h4>{{ $hotel->name }}</h4>
                 <ul class="booking_list">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
+                            <img src="{{ asset('hotels/'.$hotel->main_image) }}" class="w-100 preview">
+                        </div>
+                        <div class="col-md-4">
                             <li><strong>Stars</strong> {{ $hotel->stars }} Stars</li>
                             <li><strong>Meal Plane</strong>{{ $hotel->meal_plane }}</li>
                             <li><strong>Location</strong>{{ $hotel->location }}</li>
                             <li><strong>Min Days</strong>{{ $hotel->min_days  }} Days</li>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <li><strong>Phone</strong> {{ $hotel->phone ?? 'Not Exist' }}</li>
                             <li><strong>Email Address</strong>{{ $hotel->email ?? 'Not Exist' }}</li>
-                            <li><strong>Price</strong>{{ $hotel->price ?? 'Not Exist' }} LE</li>
                         </div>
                     </div>
                 </ul>
