@@ -67,4 +67,16 @@ class Hotel extends Model
     public function prices() {
         return $this->hasMany(Price::class);
     }
+
+    public function previewImage() {
+        return $this->belongsToMany(Image::class)->where('use_for','preview');
+    }
+
+    public function getGallary() {
+        return $this->belongsToMany(Image::class)->where('use_for','gallary');
+    }
+
+    public function images() {
+        return $this->belongsToMany(Image::class);
+    }
 }
