@@ -23,7 +23,7 @@ class HotelController extends Controller
 
     public function filter(Request $request)
     {
-        return Hotel::filter($request->all())->paginate($request['limit'] ?? 15);
+        return Hotel::filter($request)->paginate($request['limit'] ?? 15);
 
     }
 

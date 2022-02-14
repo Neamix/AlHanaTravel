@@ -72,6 +72,18 @@ class Hotel extends Model
         return self::validateResult('success',$this->getGallary()->get());
     }
 
+    public function scopeFilter($query,$filter) {
+        
+        if(isset($filter->name)) {
+            self::where('name','like',$filter->name);
+        }
+
+        if(isset($filter->name)) {
+            self::where('city_id',$filter->city_id);
+        }
+
+    }
+
     public function deleteInstance()
     {
         $this->delete();

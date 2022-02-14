@@ -13,9 +13,14 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function hotel()
+    public function hotel(Request $request)
     {
-        $hotels = Hotel::all()->reverse();
+        $hotels = Hotel::filter($request)->paginate($request['limit'] ?? 10);
+
+        if($request->ajax()) {
+            return $hotels;
+        }
+
         return view('admin.Pages.hotel')->with([
             'hotels' => $hotels
         ]);
