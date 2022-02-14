@@ -11,23 +11,13 @@ class Hotel extends Model
     use HasFactory,validationTrait;
 
     protected $guarded = [];
-    protected $with = ['prices'];
+    protected $with = ['prices','getGallary'];
 
     static function upsertInstance($data) 
     {
         $dimintionsArray = [
-            'medium' => '400X270',
+            'small' => '400X270',
         ];
-
-        $preview = null;
-        if($data->id && empty($data->main_image)) {
-            $preview = Hotel::find($data->id)->main_image;
-        }
-
-        if(! empty($data->main_image)) {
-            $view_src = Image::storeImages([$data->main_image],$dimintionsArray);
-            $preview = ( count($view_src) )  ? Image::find($view_src[0])->src : null;
-        }
         
         $hotel = self::updateOrCreate(
             ['id' => $data->id],
@@ -38,7 +28,6 @@ class Hotel extends Model
                 'phone' => $data->phone,
                 'email' => $data->email,
                 'meal_plane' => $data->meal_plane,
-                'main_image' => $preview ?? $data->main_image,
                 'min_days' => $data->min_days,
                 'description' => $data->description,
             ]
@@ -55,7 +44,32 @@ class Hotel extends Model
             ]);
         }
 
-        return self::validateResult('success',$hotel);
+        if(! empty($data->main_image)) {
+            Image::storeImages([$data->main_image],$dimintionsArray,$hotel,'preview');
+        }
+
+        return self::validateResult('success',$hotel->load('previewImage','getGallary'));
+    }
+
+    public function addGallary(array $data) {
+        $dimintionsArray = [
+            'large'  => '1600X1067',
+            'medium' => '800X600',
+            'small' => '400X270',
+        ];
+        
+        Image::storeImages($data,$dimintionsArray,$this,'gallary');
+    }
+
+    public function removeGallary(array $images_ids) {
+
+        foreach($images_ids as $image_id) {
+            $image_name = Image::where('id',$image_id)->pluck('name')->toArray();
+            $images_ids_with_name = Image::where('name',$image_name)->pluck('id')->toArray();
+            $this->getGallary()->detach($images_ids_with_name);  
+        }
+
+        return self::validateResult('success',$this->getGallary()->get());
     }
 
     public function deleteInstance()
