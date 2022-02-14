@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\TravelController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/travel/upsert',[TravelController::class,'upsert']);
-
 Route::group(['prefix' => 'admin'],function(){
     Route::get('/',[AdminController::class,'index']);
-
-    Route::group(['prefix' => 'travel'],function(){
-        Route::get('/',[TravelController::class,'index']);
-    });
-
     Route::group(['prefix' => 'hotel'],function(){
         Route::get('/',[HotelController::class,'index'])->name('hotel.index');
         Route::get('/{hotel}',[HotelController::class,'getHotel'])->name('hotel.get');
+        Route::post('/{hotel}/gallary',[HotelController::class,'editGallary'])->name('hotel.get');
+        Route::post('/{hotel}/gallary/delete',[HotelController::class,'deleteGallay'])->name('hotel.get');
         Route::post('/upsert',[HotelController::class,'upsert'])->name('hotel.upsert');
         Route::post('/delete/{hotel}',[HotelController::class,'delete'])->name('hotel.delete');
     });
@@ -39,4 +35,9 @@ Route::group(['prefix' => 'admin'],function(){
         Route::post('/upsert',[CityController::class,'upsert'])->name('city.upsert');
         Route::post('/delete/{city}',[CityController::class,'delete'])->name('city.delete');
     });
+});
+
+
+Route::get('/test',function(){
+    DB::table('hotels')->with(['previewImage'])->get();
 });
