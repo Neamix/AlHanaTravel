@@ -43,42 +43,6 @@ $('.price_table').on('click','.remove_price',function(){
 })
 
 
-$('.list_general').on('click','.edit_btn',function(){
-    console.log($(this).attr('hotel_id'));
-    $.ajax({
-        url: `hotel/${$(this).attr('hotel_id')}`,
-        success: (hotel) => {
-            console.log(hotel);
-            //add hotel main data
-            for(element in hotel) {
-                let val = hotel[element];
-                let input_class = $(`.edit_form .input_${element}`);
-                console.log($(`.edit_form .input_${element}`).length,element)
-                input_class.val(val);
-            }
-
-            //add hotel prices quotes 
-            let prices = hotel.prices;
-
-            $('.table_columns').each(function(){
-                $(this).remove();
-            });
-            
-            if(prices) {
-                console.log(prices[0]);
-                for(let i = 0; i <= prices.length - 1; i++) {
-                    insertPrice(prices[i]['quota'],prices[i]['price']);
-                }
-                prices.forEach((price) => {
-                    console.log(0);
-                  
-                })
-            }
-        }
-    })
-    
-});
-
 $('.edit_form,.add_form').on('submit',function(e){
     e.preventDefault();
     let formData = new FormData(this);
@@ -102,19 +66,19 @@ $('.edit_form,.add_form').on('submit',function(e){
             $('.table_columns').each(function(){
                 $(this).remove();
             });
-
+            console.log(event);
             if(create_state) {
                 $('.list_general').prepend(
                 `
                         <ul>
                     <li class="pl-3 mb-4 hotel_element" id="${payload.id}">
-                        <h4>${payload.name}</h4>
                         <ul class="booking_list">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <img src="{{ asset('hotels/') }}${payload.main_image}" class="w-100 preview">
+                                    <img src="" class="w-100 preview">
                                 </div>
                                 <div class="col-md-4">
+                                    <li><strong>Name</strong> ${payload.name} </li>
                                     <li><strong>Stars</strong> ${payload.stars} Stars</li>
                                     <li><strong>Meal Plane</strong>${payload.meal_plane}</li>
                                     <li><strong>Location</strong>${payload.location}</li>
@@ -127,9 +91,20 @@ $('.edit_form,.add_form').on('submit',function(e){
                             </div>
                         </ul>
                         <div class="d-flex">
-                            <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#client_detail_modal" hotel_id="${payload.id}">
+                            <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#client_detail_modal" modal_class=".edit_form" modal="hotel" modal_id="${payload.id}">
                                 <i class="fa fa-fw fa-pencil"></i> Edit Hotel
                             </a>
+
+                            <a href="#0" class="btn_1 gray edit_btn ml-2" data-toggle="modal" data-target="#gallary_get" modal_class=".gallary_show" modal="hotel" modal_id="${payload.id}">
+                                <i class="fa fa-th" aria-hidden="true"></i>
+                                Show Gallary
+                            </a>
+
+                            <a href="#0" class="btn_1 gray gallary_btn edit_btn ml-2" data-toggle="modal" data-target="#image_upload" modal_class=".gallary_modal" modal="hotel" modal_id="${payload.id}">
+                                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                Gallary
+                            </a>
+
 
                             <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_hotel_modal" hotel_id="${payload.id}">
                                 <i class="fa fa-trash"></i> Delete Hotel
@@ -141,13 +116,13 @@ $('.edit_form,.add_form').on('submit',function(e){
                     )
             } else {
                 $(`li.hotel_element#${payload.id}`).html('').append(`
-                <h4>${payload.name}</h4>
                         <ul class="booking_list">
                             <div class="row">
-                                <div class="col-md-3">
-                                    <img src="{{ asset('hotels/') }}${payload.main_image}" class="w-100 preview">
+                                <div class="col-md-2">
+                                    <img src="" class="w-100 preview">
                                 </div>
                                 <div class="col-md-4">
+                                    <li><strong>Name</strong> ${payload.name} </li>
                                     <li><strong>Stars</strong> ${payload.stars} Stars</li>
                                     <li><strong>Meal Plane</strong>${payload.meal_plane}</li>
                                     <li><strong>Location</strong>${payload.location}</li>
@@ -160,14 +135,30 @@ $('.edit_form,.add_form').on('submit',function(e){
                             </div>
                         </ul>
                         <div class="d-flex">
-                            <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#client_detail_modal"  hotel_id="${payload.id}">
+                            <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#client_detail_modal" modal_class=".edit_form" modal="hotel" modal_id="${payload.id}">
                                 <i class="fa fa-fw fa-pencil"></i> Edit Hotel
                             </a>
+
+                            <a href="#0" class="btn_1 gray edit_btn ml-2" data-toggle="modal" data-target="#gallary_get" modal_class=".gallary_show" modal="hotel" modal_id="${payload.id}">
+                                <i class="fa fa-th" aria-hidden="true"></i>
+                                Show Gallary
+                            </a>
+
+                            <a href="#0" class="btn_1 gray gallary_btn edit_btn ml-2" data-toggle="modal" data-target="#image_upload" modal_class=".gallary_modal" modal="hotel" modal_id="${payload.id}">
+                                <i class="fa fa-fw fa-pencil"></i> Gallary
+                            </a>
+
                             <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_hotel_modal" hotel_id="${payload.id}">
                                 <i class="fa fa-trash"></i> Delete Hotel
                             </a>
                         </div>
                 `)
+            }
+
+            if(!payload.preview_image.length) {
+                $(`li.hotel_element#${payload.id} .preview`).attr('src',"{{ asset('img/no-image.jpg') }}")
+            } else {
+                $(`li.hotel_element#${payload.id} .preview`).attr('src',`\\images\\small\\${payload.preview_image[0].name}`)
             }
 
         },
@@ -192,19 +183,5 @@ $('.list_general').on('click','.delete_btn',function(e){
     
     $('input.del_hotel_id').val(id);
 });
-
-$('.delete_form').on('submit',function(e){
-    e.preventDefault();
-    let delete_id = $('.del_hotel_id').val();
-    $.ajax({
-        url: `/admin/hotel/delete/${delete_id}`,
-        type: 'post',
-        data: {hotel: delete_id},
-        success: (event) => {
-            $(`li.hotel_element#${delete_id}`).remove();
-            $('.close').click();
-        }
-    });
-})
 
 </script>

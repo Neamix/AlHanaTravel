@@ -110,7 +110,12 @@
                     </div>
                     <input type="hidden" class="form-control date-pick input_id" value="" name="id">
                     <div class="modal-footer">
-                        <button class="btn btn-primary" href="#0">Save</button>
+                        <button class="btn btn-primary d-flex loader_key" href="#0" loader_name="edit_hotel_loader">
+                            <div class="loader d-none" data-load="edit_hotel_loader">
+                                <span></span>
+                            </div>
+                            Save
+                        </button>
                     </div>
                 <!-- /Row -->
                 </form>
@@ -119,21 +124,27 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="delete_hotel_modal" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true">
+<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="client_detail_modalLabel">Delete Hotel</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
             <div class="modal-body">
                 <form class="delete_form" data="delete">
                     <input type="hidden" class="del_hotel_id" value="">
-                    <p class="del_warning">Are you sure that you want to delete this hotel? this action is irreversable</p>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary">Delete</button>
+                    <div class="w-100 d-flex justify-content-center">
+                        <img src="{{ asset('img/delete.png') }}">
+                    </div>
+                    <p class="del_warning text-center">
+                        Greating Hoody, Are you sure that you want to delete this text ? we just make sure because this data wont be able to revive
+                    </p>
+                    <div class="footer">
+                        <button class="close_btn mr-2 btn d-block w-100 mb-2" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                            Close
+                        </button>
+                        <button class="btn btn-primary btn d-block w-100 mb-2">
+                            <i class="fa fa-ban" aria-hidden="true"></i>
+                            Delete
+                        </button>
                     </div>
                 <!-- /Row -->
                 </form>
@@ -310,9 +321,83 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" href="#0">Save</button>
+                        <button class="btn btn-primary" href="#0">
+                            Save
+                        </button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade images_upload_model" id="image_upload" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true" data="edit">
+    <div class="modal-dialog  gallary_modal"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-small" id="client_detail_modalLabel">Hotel Gallary</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <button class="btn_1 gray upload_btn">
+                    <i class="fa fa-plus ml-2"></i>
+                    Upload Image
+                </button>
+                <form class="images_upload_form">
+                    <input type="file" name="image_gallary" class="d-none" multiple>
+                </form>
+                <div class="hotel_images_recent_upload mt-3 row">
+                    <p class="empty-txt">No images</p>
+                </div>
+                <div class="hotel_images">
+
+                </div>
+                <input type="hidden" class="form-control date-pick input_id" value="" name="id">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary edit-gallary d-flex loader_key" href="#0" loader_name="add_hotel_gallary_loader">
+                    <div class="loader d-none" data-load="add_hotel_gallary_loader">
+                        <span></span>
+                    </div>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade gallary_show gallary_show_images " id="gallary_get" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true" data="edit">
+    <div class="modal-dialog wide gallary_modal"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="client_detail_modalLabel">Hotel Gallary</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="loader big d-none" data-load="hotel_gallary">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="hotel_images_recent  row">
+                   
+                </div>
+                <div class="hotel_images">
+
+                </div>
+                <input type="hidden" class="form-control date-pick input_id" value="" name="id">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary update_gallary d-flex loader_key" href="#0" loader_name="edit_hotel_gallary_loader">
+                    <div class="loader d-none" data-load="edit_hotel_gallary_loader">
+                        <span></span>
+                    </div>
+                    Save
+                </button>
             </div>
         </div>
     </div>
