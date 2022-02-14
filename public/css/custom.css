@@ -1,1 +1,126 @@
 /* YOUR CUSTOM CSS */
+.hotel_element .preview {
+    height: 143px;
+    border-radius: 8px;
+}
+
+/* model*/
+.modal-body{
+    min-height: 321px;
+}
+
+.frame {
+    width: 100%;
+    margin: 1px;
+    position: relative;
+    border: 3px solid transparent;
+}
+
+.hotel_images_recent_upload .frame span {
+    display: none;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background: var(--danger);
+    opacity: 1;
+    border-radius: 50%;
+    top: -8px;
+    right: -9px;
+    z-index: 100;
+}
+
+.layout {
+    top: 0;
+    left: 0;
+    background: #ccc5;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    padding: 10px;
+    opacity: 0;
+    transition: all .3s linear;
+}
+
+.empty-txt {
+    width: 100%;
+    height: 100%;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.frame:hover .layout{
+    opacity: 1;
+}
+
+.delete_form img {
+    width: 87px;
+    margin-bottom: 62px;
+    margin-top: 10px;
+}
+
+
+.hotel_images_recent_upload img {
+    height: 133px !important;
+    width: 100%;
+    border-radius: 3px;
+}
+
+img.preview {
+    width: 100%;
+    height: 197px;
+    border-radius: 3px;
+}
+
+.edit_gray_btn {
+    font-size: 11px;
+    padding: 6px 37px;
+}
+
+.upload_btn {
+    
+}
+/* loader */
+.loader {
+    width: 15px;
+    height: 15px;
+    border: 4px solid;
+    border-radius: 50%;
+    margin: 0 10px;
+    position: relative;
+    border-color: #ccc;
+    border-top-color: #fff;
+    animation: 2s ease-in infinite reverse both running loader;
+    top: 2px;
+}
+
+.loader.big {
+    width: 84px;
+    height: 84px;
+}
+
+.loader.active {
+    display: block;
+}
+
+/*btns*/
+.close_btn {
+    font-size: 12px;
+    background: var(--danger);
+    color: #fff !important;
+    font-weight: 100;
+    padding: 6px 20px;
+    height: 29px;
+    border-radius: 20px;
+}
+
+@keyframes loader {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

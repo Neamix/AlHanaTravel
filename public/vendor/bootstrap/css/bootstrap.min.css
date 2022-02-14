@@ -2894,9 +2894,12 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
+    background: var(--gray-dark);
+    border: none;
+    font-size: 12px;
+    border-radius: 20px;
+    padding: 6px 20px;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff
 }
 
 .btn-primary:hover {
@@ -6629,7 +6632,6 @@ a.close.disabled {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: .3rem;
     outline: 0
 }
 

@@ -570,10 +570,6 @@ a.btn_1:hover,
   color: #fff;
 }
 
-.btn-primary {
-  background-color: #fc5b62;
-  border-color: #fc5b62;
-}
 .btn-primary:hover {
   background-color: #0054a6;
   border-color: #0054a6;

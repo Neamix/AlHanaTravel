@@ -22,7 +22,6 @@ class CreateHotelsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             // $table->foreignId('city_id');
-            $table->string('main_image')->nullable();
             $table->string('min_days');
             $table->text('description');
             $table->timestamps();
