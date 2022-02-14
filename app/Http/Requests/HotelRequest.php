@@ -27,7 +27,6 @@ class HotelRequest extends FormRequest
             'stars' => ['required','between:0,5','integer'],
             'meal_plane' => ['required'],
             'location' => ['required'],
-            'main_image' => ['mimetypes:image/png,image/jpg,image/jpeg'],
             'phone' => ['integer'],
             'email' => ['email'],
             'name' => ['required'],
