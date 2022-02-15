@@ -13,9 +13,9 @@
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-          <a class="nav-link" href="bookings.html">
+          <a class="nav-link" href="{{ route('city.index') }}">
             <i class="fa fa-fw fa-calendar-check-o"></i>
-            <span class="nav-link-text">Bookings <span class="badge badge-pill badge-primary">6 New</span></span>
+            <span class="nav-link-text">Cities </span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
