@@ -183,5 +183,29 @@ $('.list_general').on('click','.delete_btn',function(e){
     
     $('input.del_hotel_id').val(id);
 });
+createPagination('{{$hotels->total()}}','{{$hotels->perPage()}}')
+$('.pagination').on('click','.page-item',function(){
+    setPage($(this).attr('value'));
+});
 
+$('.search_hotel').on('keyup',function(){
+    $.ajax({
+        url: '/hotel/filter',
+        method: 'post',
+        data: {name: $(this).val()},
+        success: (e) => {
+            let hotels = e.data;
+            let payloadGroup = e.data;
+
+            $('.list_general').html('');
+
+            payloadGroup.forEach(payload => {
+                console.log(payload);
+                $('.list_general').append(loadAdminHotel(payload));
+                createPagination(e.total,e.per_page);
+                setPage(1);
+            });
+        }
+    })
+});
 </script>
