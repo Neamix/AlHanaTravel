@@ -23,6 +23,12 @@ class City extends Model
         return self::validateResult('success',$city);
     }
 
+    public function deleteInstance()
+    {
+        $this->delete();
+        return self::validateResult('success',$this);
+    }
+
     public function hotels() {
         return $this->belongsToMany(Hotel::class);
     }

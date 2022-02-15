@@ -20,6 +20,11 @@ class CityController extends Controller
         return City::upsertInstance($request);
     }
 
+    public function delete(City $city)
+    {
+        return $city->deleteInstance();
+    }
+
     public function getCity(City $city) 
     {
         return $city;
