@@ -16,7 +16,6 @@
     </div>
     <footer>
     @include('admin.layouts.footer')
-    @yield('script')
     </footer>
 </body>
 </html>

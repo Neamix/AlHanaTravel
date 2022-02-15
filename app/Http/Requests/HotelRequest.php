@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 
 class HotelRequest extends FormRequest
 {
@@ -27,8 +28,24 @@ class HotelRequest extends FormRequest
             'stars' => ['required','between:0,5','integer'],
             'meal_plane' => ['required'],
             'location' => ['required'],
-            'phone' => ['integer'],
-            'email' => ['email'],
+            'phone' => [function($value,$attribute,$fail){
+                if(!empty($this->phone)) {
+                    $validator = Validator::make(['phone'=>$this->phone],[
+                        'phone' => 'integer'
+                    ]);
+                    
+                    if ($validator->errors()->messages()) {
+                        return $fail($validator->errors()->messages()['phone'][0]);
+                    }
+                }
+            }],
+            'email' => [function($value,$attribute,$fail){
+                if($this->email) {
+                    if(! filter_var($this->email,FILTER_VALIDATE_EMAIL)) {
+                        return $fail('This is not a valid email');
+                    }
+                }
+            }],
             'name' => ['required'],
             'description' => ['required'],
             'min_days' => ['required'],
@@ -39,7 +56,7 @@ class HotelRequest extends FormRequest
                     return $fail('You have to add at least one price quota');
                 }
 
-                foreach($prices as $price) {
+                foreach($prices as $key => $price) {
                     
                 }
             }]

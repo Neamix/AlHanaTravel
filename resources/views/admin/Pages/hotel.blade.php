@@ -18,12 +18,23 @@ Hotels
     <li class="breadcrumb-item active">Hotels</li>
 </ol>
 <div class="box_general">
-    <div class="header_box">
+    <div class="header_box d-flex align-items-center">
         <h2 class="d-inline-block">Hotels</h2>
         <i class="fa fa-plus ml-3" data-toggle="modal" data-target="#add_new_hotel"></i>
+        <ul class="ml-auto nav">
+            <li class="nav-item">
+                <form class="d-flex justify-content-center align-items-center">
+                    <div class="loader d-none" data-load="search_hotel_loader">
+                        <span></span>
+                    </div>
+                    <input class="form-control search_hotel loader-key" placeholder="Search Hotel" related_to="hotel" name="name" loader_name="search_hotel_loader">
+                </form>
+            </li>
+        </ul>
     </div>
-    <div class="list_general">
-        <ul>
+    <div class="list_general postion-relative">
+        <div class="overlay w-100 h-100 position-absolute"></div>
+        <ul class="hotel_holder">
             @if(!count($hotels))
                 <p class="w-100 text-center out_content mb-3 mt-3 pb-3">No hotels to view</p>
             @endif
@@ -73,21 +84,8 @@ Hotels
         </ul>
     </div>
 </div>
-<!-- /box_general-->
-<!-- <nav aria-label="...">
-    <ul class="pagination pagination-sm add_bottom_30">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav> -->
-<!-- Booking/order Modal -->
+<div class="pagination" container_class=".list_general" action="empty_fill" modal="hotel" load="loadAdminHotel" url="{{ route('hotel.filter') }}"></div>
+<input class="page-indicator" value="1" type="hidden">
 @include('admin.models')
 @endsection
 

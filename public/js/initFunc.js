@@ -85,19 +85,16 @@ $(document).on('click','.edit_btn',function(){
                 console.log(gallary_images,'here');
 
                 gallary_images.forEach(image => {
-                    console.log(image.size);
-                    if(image.size == 'small') {
-                        $('.hotel_images_recent').append(`
-                            <div class=" col-md-3 image-holder pl-1 pr-1">
-                                <div class="frame mt-1">
-                                    <img src="\\images\\small\\${image.name}" alt="image" class="preview">
-                                    <div class="position-absolute w-100 h-100 layout">
-                                        <button class="btn_1 gray edit_gray_btn delete_gallary delete-exist-gallary" image_id="${image.id}">Delete</button>
-                                    </div>
-                                </div>
+                    $('.hotel_images_recent').append(`
+                    <div class=" col-md-3 image-holder pl-1 pr-1">
+                        <div class="frame mt-1">
+                            <img src="\\images\\small\\${image.name}" alt="image" class="preview">
+                            <div class="position-absolute w-100 h-100 layout">
+                                <button class="btn_1 gray edit_gray_btn delete_gallary delete-exist-gallary" image_id="${image.id}">Delete</button>
                             </div>
-                        `)
-                    }
+                        </div>
+                    </div>
+                `)
                 });
             }
         }
