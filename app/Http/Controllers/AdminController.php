@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function hotel(Request $request)
     {
-        $hotels = Hotel::filter($request)->paginate($request['limit'] ?? 10);
+        $hotels = Hotel::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 2);
 
         if($request->ajax()) {
             return $hotels;
