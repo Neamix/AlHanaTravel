@@ -24,9 +24,9 @@ Citites
     </div>
     <div class="list_general">
             @if(!count($cities))
-                <p class="w-100 text-center out_content mb-3 mt-3 pb-3">No cities to view</p>
+                <p class="w-100 text-center out_content mb-3 mt-3 pb-3 empty_text">No cities to view</p>
             @endif
-           <ul>
+           <ul class="city_list">
            @foreach($cities as $city)
             <li class="pl-3 mb-4 city_element" id="{{ $city->id }}">
                 <ul class="booking_list">
@@ -38,12 +38,12 @@ Citites
                     </div>
                 </ul>
                 <div class="d-flex">
-                    <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#edit_city" city_id="{{ $city->id }}">
+                    <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#edit_city" modal="city" modal_class=".edit_city" modal_id="{{ $city->id }}">
                         <i class="fa fa-fw fa-pencil"></i> Edit city
                     </a>
 
-                    <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_city_modal" city_id="{{ $city->id }}">
-                        <i class="fa fa-trash"></i> Delete city
+                    <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_modal" modal_id="{{ $city->id }}" modal="city">
+                        <i class="fa fa-trash"></i> Delete Hotel
                     </a>
                 </div>
             </li>
