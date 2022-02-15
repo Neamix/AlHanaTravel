@@ -56,7 +56,28 @@ function loadAdminHotel(payload,createState = true) {
         `
     }
 
-    console.log(build);
-
     return build;
+}
+
+
+function loadAdminCity(payload) {
+    return `<li class="pl-3 mb-4 city_element" id="${payload.id}">
+    <ul class="booking_list">
+        <div class="row">
+            <div class="col-md-6">
+                <li><strong>id</strong> #${payload.id}</li>
+                <li><strong>Name</strong> ${payload.name}</li>
+            </div>
+        </div>
+    </ul>
+    <div class="d-flex">
+        <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#edit_city" modal="city" modal_class=".edit_city" modal_id="${payload.id}">
+            <i class="fa fa-fw fa-pencil"></i> Edit city
+        </a>
+
+        <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_city_modal" modal_id="${payload.id}">
+            <i class="fa fa-trash"></i> Delete city
+        </a>
+    </div>
+</li>`
 }
