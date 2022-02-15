@@ -16,18 +16,27 @@
         e.preventDefault();
         let formData = new FormData(this);
         let create_state = ($(this).attr('data') == 'add') ? true : false;
+        console.log(create_state);
         $.ajax({
             url: '{{route("city.upsert")}}',
             type: 'post',
             data: formData,
             contentType: false,
             processData: false,
-            success: (event) => {
-                console.log(event);
+            success: (e) => {
+                let payload = e.payload;
+                $('.error').text('');
+                $('#add_new_city,#edit_city').modal('hide');  
+                if(create_state) {
+                    $('.list_general .city_list').append(loadAdminCity(payload))
+                    $('.empty_text').remove();
+                    $(this).trigger('reset');
+                } else {
+                    $(`.list_general .city_element#${payload.id}`).prepend(loadAdminCity(payload))
+                }
             },
             error: (error_bag) => {
                 let errors = error_bag.responseJSON.errors;
-                console.log(errors);
                 $(this).find('.error').text('');
                 for (error in errors ) {
                     $(this).find(`p.error_${error}`).text(errors[error]);
