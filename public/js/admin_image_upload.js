@@ -1,15 +1,18 @@
 let gallary = [];
 let deleted_gallary_ids = [];
 $('.upload_btn').on('click',function(){
-    console.log('click');
     $('.images_upload_form input').trigger('click');
 });
 
-$('.images_upload_form input').on('change',function(){
+$('.images_upload_model input').on('change',function(){
     $('.images_upload_model .empty-txt').addClass('d-none');
+    
     for(file in this.files) {
         createNewFileUpload(this.files[file],file)
     }
+
+    document.querySelector('.images_upload_form').reset()
+    this.files = [];
 });
 
 function createNewFileUpload(file,index) {
@@ -17,7 +20,6 @@ function createNewFileUpload(file,index) {
     let allowedTypes = ['image/jpeg','image/png','image/jpg'];
     //file read
     if(! Number.isInteger(file)) {  gallary.push(file); }
-    console.log(gallary)
     let fileRead = new FileReader();
     fileRead.onload = function () {
         let result = fileRead.result;
@@ -51,9 +53,9 @@ $('.edit-gallary').on('click',function(){
     let id = $('.gallary_modal .input_id').val();
     let formData = new FormData();
     gallary.forEach(image => {
-        console.log(gallary);
         formData.append('gallary[]',image);
-    })
+    });
+
     $.ajax({
         url: `/admin/hotel/${id}/gallary`,
         data: formData,
@@ -62,6 +64,7 @@ $('.edit-gallary').on('click',function(){
         type: 'post',
         success: (e) => {
             $('.images_upload_model').modal('toggle');
+            formData.delete('gallary[]');
         }
     })
 });
@@ -72,6 +75,12 @@ $(document).on('click','.delete-exist-gallary',function(){
     deleted_gallary_ids.push(deleted_id);
 
     $(this).closest('.image-holder').remove();
+});
+
+$('#image_upload').on('hidden.bs.modal', function () {
+    deleted_gallary_ids = [];
+    gallary = [];
+    document.querySelector('.images_upload_form').reset();
 });
 
 $('.update_gallary').on('click',function(){

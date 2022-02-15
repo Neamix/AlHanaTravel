@@ -245,14 +245,13 @@
                         <div class="form-group">
                             <label>Min days</label>
                             <input type="number" class="form-control date-pick input_min_days" value="" name="min_days">
-                            <p class="error error_stars"></p>
+                            <p class="error error_min_days"></p>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>View Image</label>
                             <input type="file" class="form-control date-pick input_main_image" value="" name="main_image">
-                            <p class="error error_stars"></p>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -263,9 +262,12 @@
                         </div>
                     </div>
                     </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" href="#0">Save</button>
-                    </div>
+                    <button class="btn btn-primary d-flex loader_key" href="#0" loader_name="add_hotel_loader">
+                        <div class="loader d-none" data-load="add_hotel_loader">
+                            <span></span>
+                        </div>
+                        Save
+                    </button>
                 <!-- /Row -->
                 </form>
             </div>

@@ -5,12 +5,14 @@ $('.input_gallary_image').on('change',function(){
 });
 
 $('.add_new_price').on('click',function(){
-    let form  = $(this).attr('form_class');
-    let price = $(form).find('.input_price_key').val();
-    let val = $(form).find('.input_price_val').val();
-    $(form).find('.input_price_val').val('')
-    $(form).find('.input_price_key').val('')
-    insertPrice(price,val); 
+    let price =  $($(this).attr('form_class')).find('.input_price_key').val();
+    let val =  $($(this).attr('form_class')).find('.input_price_val').val();
+    
+    if(price.length && val.length)  {
+        $($(this).attr('form_class')).find('.input_price_val').val('')
+        $($(this).attr('form_class')).find('.input_price_key').val('')
+        insertPrice(price,val); 
+    }
 });
 
 function insertPrice(key,val) {
@@ -68,91 +70,9 @@ $('.edit_form,.add_form').on('submit',function(e){
             });
             console.log(event);
             if(create_state) {
-                $('.list_general').prepend(
-                `
-                        <ul>
-                    <li class="pl-3 mb-4 hotel_element" id="${payload.id}">
-                        <ul class="booking_list">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="" class="w-100 preview">
-                                </div>
-                                <div class="col-md-4">
-                                    <li><strong>Name</strong> ${payload.name} </li>
-                                    <li><strong>Stars</strong> ${payload.stars} Stars</li>
-                                    <li><strong>Meal Plane</strong>${payload.meal_plane}</li>
-                                    <li><strong>Location</strong>${payload.location}</li>
-                                    <li><strong>Min Days</strong>${payload.min_days} Days</li>
-                                </div>
-                                <div class="col-md-5">
-                                    <li><strong>Phone</strong>${payload.phone}</li>
-                                    <li><strong>Email Address</strong>${payload.email}</li>
-                                </div>
-                            </div>
-                        </ul>
-                        <div class="d-flex">
-                            <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#client_detail_modal" modal_class=".edit_form" modal="hotel" modal_id="${payload.id}">
-                                <i class="fa fa-fw fa-pencil"></i> Edit Hotel
-                            </a>
-
-                            <a href="#0" class="btn_1 gray edit_btn ml-2" data-toggle="modal" data-target="#gallary_get" modal_class=".gallary_show" modal="hotel" modal_id="${payload.id}">
-                                <i class="fa fa-th" aria-hidden="true"></i>
-                                Show Gallary
-                            </a>
-
-                            <a href="#0" class="btn_1 gray gallary_btn edit_btn ml-2" data-toggle="modal" data-target="#image_upload" modal_class=".gallary_modal" modal="hotel" modal_id="${payload.id}">
-                                <i class="fa fa-picture-o" aria-hidden="true"></i>
-                                Gallary
-                            </a>
-
-
-                            <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_hotel_modal" hotel_id="${payload.id}">
-                                <i class="fa fa-trash"></i> Delete Hotel
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-                        `
-                    )
+                $('.list_general').prepend(loadAdminHotel(payload,create_state))
             } else {
-                $(`li.hotel_element#${payload.id}`).html('').append(`
-                        <ul class="booking_list">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="" class="w-100 preview">
-                                </div>
-                                <div class="col-md-4">
-                                    <li><strong>Name</strong> ${payload.name} </li>
-                                    <li><strong>Stars</strong> ${payload.stars} Stars</li>
-                                    <li><strong>Meal Plane</strong>${payload.meal_plane}</li>
-                                    <li><strong>Location</strong>${payload.location}</li>
-                                    <li><strong>Min Days</strong>${payload.min_days} Days</li>
-                                </div>
-                                <div class="col-md-5">
-                                    <li><strong>Phone</strong>${payload.phone}</li>
-                                    <li><strong>Email Address</strong>${payload.email}</li>
-                                </div>
-                            </div>
-                        </ul>
-                        <div class="d-flex">
-                            <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#client_detail_modal" modal_class=".edit_form" modal="hotel" modal_id="${payload.id}">
-                                <i class="fa fa-fw fa-pencil"></i> Edit Hotel
-                            </a>
-
-                            <a href="#0" class="btn_1 gray edit_btn ml-2" data-toggle="modal" data-target="#gallary_get" modal_class=".gallary_show" modal="hotel" modal_id="${payload.id}">
-                                <i class="fa fa-th" aria-hidden="true"></i>
-                                Show Gallary
-                            </a>
-
-                            <a href="#0" class="btn_1 gray gallary_btn edit_btn ml-2" data-toggle="modal" data-target="#image_upload" modal_class=".gallary_modal" modal="hotel" modal_id="${payload.id}">
-                                <i class="fa fa-fw fa-pencil"></i> Gallary
-                            </a>
-
-                            <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_hotel_modal" hotel_id="${payload.id}">
-                                <i class="fa fa-trash"></i> Delete Hotel
-                            </a>
-                        </div>
-                `)
+                $(`li.hotel_element#${payload.id}`).html('').append(loadAdminHotel(payload,create_state))
             }
 
             if(!payload.preview_image.length) {

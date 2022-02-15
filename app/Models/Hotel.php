@@ -47,7 +47,7 @@ class Hotel extends Model
         }
 
         if(! empty($data->main_image)) {
-            $file = Storage::disk('public')->put("/queue",$data->main_image);
+            $file = Storage::disk('public')->put("queue",$data->main_image);
             Image::storeImages($file,$dimintionsArray,$hotel,'preview');
         }
 
