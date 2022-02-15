@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use App\Jobs\ImageProcessing;
 use App\Traits\validationTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Hotel extends Model
 {
     use HasFactory,validationTrait;
 
     protected $guarded = [];
-    protected $with = ['prices','getGallary'];
+    protected $with = ['prices','getGallary','previewImage'];
 
     static function upsertInstance($data) 
     {
@@ -45,21 +47,28 @@ class Hotel extends Model
         }
 
         if(! empty($data->main_image)) {
-            Image::storeImages([$data->main_image],$dimintionsArray,$hotel,'preview');
+            $file = Storage::disk('public')->put("/queue",$data->main_image);
+            Image::storeImages($file,$dimintionsArray,$hotel,'preview');
         }
 
         return self::validateResult('success',$hotel->load('previewImage','getGallary'));
     }
 
-    public function addGallary(array $data) {
+    public function addGallary(array $images) {
         $dimintionsArray = [
             'large'  => '1600X1067',
             'medium' => '800X600',
             'small' => '400X270',
         ];
-        
-        Image::storeImages($data,$dimintionsArray,$this,'gallary');
+     
+        // dd(Storage::disk('public')->files('queue'));
+        foreach($images as $image) {
+            $file = Storage::disk('public')->put("/queue",$image);
+            ImageProcessing::dispatch($file,$dimintionsArray,$this,'gallary');
+        }
+
     }
+    
 
     public function removeGallary(array $images_ids) {
 
@@ -73,13 +82,12 @@ class Hotel extends Model
     }
 
     public function scopeFilter($query,$filter) {
-        
         if(isset($filter->name)) {
-            self::where('name','like',$filter->name);
+            $query->where('name','like',"%$filter->name%");
         }
 
-        if(isset($filter->name)) {
-            self::where('city_id',$filter->city_id);
+        if(isset($filter->city_id)) {
+            $query->where('city_id',$filter->city_id);
         }
 
     }
