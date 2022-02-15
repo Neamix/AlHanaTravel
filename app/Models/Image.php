@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ImageResize;
 use File;
+use Illuminate\Support\Facades\Storage;
 
 class Image extends Model
 {
@@ -18,57 +19,50 @@ class Image extends Model
         self::createDirectory($model,true,"medium");
     }
 
-    static function storeImages($images,$dimintionsArray,$model,$use_for = null) {
-        foreach($images as $key => $image) {
-            $name = uniqid() . '.png';
-            $idsArray = [];
-            $dir = public_path() . "\\images";
+    static function storeImages($file,$dimintionsArray,$model,$use_for = null) {
+        $image = Storage::disk('public')->get($file);
+        $name = uniqid() . '.png';
+        $idsArray = [];
+        $dir = public_path() . "\\images";
 
-            foreach($dimintionsArray as $key => $dimintion)
-            {
-                $dimintion = explode('X',$dimintion);
-                self::resize($image,$dimintion)->save($dir."\\$key\\".$name);
-                
-                if($use_for == 'preview') {
-                    $model->previewImage()->delete();
-                }
+        $imageInstance = self::create([
+            'name' => $name,
+            'use_for' => $use_for,
+        ]);
 
-                $imageInstance = self::create([
-                    'name' => $name,
-                    'use_for' => $use_for,
-                    'size' => $key
-                ]);
-
-
-                /**
-                 * In case the image will be used to preview remove the old preview 
-                 * image and add new one
-                 * 
-                 * in case the image will be used in gallary just attach the new values
-                 */
-                
-                if($use_for == 'preview') {
-                    if($model->previewImage()->count()){
-                        Image::where('name',$name)->delete();
-                    }
-
-                    $model->images()->sync([$imageInstance->id]);
-
-                } else {
-                    $model->images()->attach([$imageInstance->id]);
-                }
-
-                array_push($idsArray,$imageInstance->id);
+        if($use_for == 'preview') {
+            $model_old_preview = $model->previewImage()->where('images.id','!=',$imageInstance->id)->pluck('name')->toArray();
+            
+            if(count($model_old_preview)){
+                // Image::where('name',$model_old_preview->name)->delete();
             }
 
+            $model->images()->sync([$imageInstance->id]);
+
+        } else {
+            $model->images()->attach([$imageInstance->id]);
         }
 
-        return $idsArray;
+        foreach($dimintionsArray as $key => $dimintion)
+        {
+            $dimintion = explode('X',$dimintion);
+            self::resize($image,$dimintion)->save($dir."\\$key\\".$name);
+
+            /**
+             * In case the image will be used to preview remove the old preview 
+             * image and add new one
+             * 
+             * in case the image will be used in gallary just attach the new values
+             */
+            
+            array_push($idsArray,$imageInstance->id);
+        }
         
+        $image = Storage::disk('public')->delete($file);
     }
 
     static function resize($image,$dimintion) {
-        $imgFile = ImageResize::make($image->getRealPath());
+        $imgFile = ImageResize::make($image);
         return $imgFile->resize($dimintion[0], $dimintion[1], function ($constraint) {
             $constraint->aspectRatio();
         });
