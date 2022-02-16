@@ -32,7 +32,7 @@
                     $('.empty_text').remove();
                     $(this).trigger('reset');
                 } else {
-                    $(`.list_general .city_element#${payload.id}`).prepend(loadAdminCity(payload))
+                    $(`.list_general .city_element#${payload.id}`).html('').prepend(loadAdminCity(payload,create_state))
                 }
             },
             error: (error_bag) => {
@@ -44,5 +44,10 @@
             }
         })
     });
+
+    createPagination('{{$cities->total()}}','{{$cities->perPage()}}');
     
+    $('.pagination').on('click','.page-item',function(){
+        setPage($(this).attr('value'));
+    });
 </script>

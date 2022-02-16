@@ -25,6 +25,10 @@ class CityController extends Controller
         return $city->deleteInstance();
     }
 
+    public function filter(Request $request) {
+        return City::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 1);
+    }
+
     public function getCity(City $city) 
     {
         return $city;

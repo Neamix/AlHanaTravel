@@ -13,7 +13,7 @@ class Hotel extends Model
     use HasFactory,validationTrait;
 
     protected $guarded = [];
-    protected $with = ['prices','getGallary','previewImage'];
+    protected $with = ['prices','preview','city','images'];
 
     static function upsertInstance($data) 
     {
@@ -30,6 +30,7 @@ class Hotel extends Model
                 'phone' => $data->phone,
                 'email' => $data->email,
                 'meal_plane' => $data->meal_plane,
+                'city_id' => $data->city_id,
                 'min_days' => $data->min_days,
                 'description' => $data->description,
             ]
@@ -47,11 +48,10 @@ class Hotel extends Model
         }
 
         if(! empty($data->main_image)) {
-            $file = Storage::disk('public')->put("queue",$data->main_image);
-            Image::storeImages($file,$dimintionsArray,$hotel,'preview');
+            Image::storePreview($data->main_image,$dimintionsArray,$hotel);
         }
 
-        return self::validateResult('success',$hotel->load('previewImage','getGallary'));
+        return self::validateResult('success',Hotel::find($hotel->id));
     }
 
     public function addGallary(array $images) {
@@ -61,7 +61,6 @@ class Hotel extends Model
             'small' => '400X270',
         ];
      
-        // dd(Storage::disk('public')->files('queue'));
         foreach($images as $image) {
             $file = Storage::disk('public')->put("/queue",$image);
             ImageProcessing::dispatch($file,$dimintionsArray,$this,'gallary');
@@ -102,15 +101,15 @@ class Hotel extends Model
         return $this->hasMany(Price::class);
     }
 
-    public function previewImage() {
-        return $this->belongsToMany(Image::class)->where('use_for','preview');
-    }
-
-    public function getGallary() {
-        return $this->belongsToMany(Image::class)->where('use_for','gallary');
+    public function preview() {
+        return $this->belongsTo(Image::class,'image_id');
     }
 
     public function images() {
         return $this->belongsToMany(Image::class);
+    }
+
+    public function city() {
+        return $this->belongsTo(City::class);
     }
 }

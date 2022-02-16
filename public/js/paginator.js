@@ -60,8 +60,9 @@ $(document).on('click','.page-item',function(){
             let payloadGroup = e.data;
 
             $(container).html('');
-
+            console.log(payloadGroup);
             payloadGroup.forEach(payload => {
+                console.log(window[pagination.attr('load')](payload));
                 $(container).append(window[pagination.attr('load')](payload));
             });
         }

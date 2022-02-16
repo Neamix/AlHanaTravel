@@ -22,3 +22,7 @@ use Illuminate\Support\Facades\Storage;
 Route::group(['prefix' => 'hotel'],function(){
     Route::post('/filter',[HotelController::class,'filter'])->name('hotel.filter');
 });
+
+Route::group(['prefix' => 'city'],function(){
+    Route::post('/filter',[CityController::class,'filter'])->name('city.filter');
+});

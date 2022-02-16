@@ -1,6 +1,6 @@
 /* YOUR CUSTOM CSS */
-.hotel_element .preview {
-    height: 143px;
+.preview {
+    height: 150px !important;
     border-radius: 8px;
 }
 

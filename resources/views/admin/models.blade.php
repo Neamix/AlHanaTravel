@@ -93,6 +93,21 @@
                             <p class="error error_stars"></p>
                         </div>
                     </div>
+
+                    @if(isset($cities))
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Cities</label>
+                            <select class="form-control select_city_id" name="city_id">
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+                            <p class="error error_city_id"></p>
+                        </div>
+                    </div>
+                    @endif
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>View Image</label>
@@ -248,6 +263,21 @@
                             <p class="error error_min_days"></p>
                         </div>
                     </div>
+
+                    @if(isset($cities))
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Cities</label>
+                            <select class="form-control" name="city_id">
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+                            <p class="error error_city_id"></p>
+                        </div>
+                    </div>
+                    @endif
+
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>View Image</label>
@@ -293,6 +323,11 @@
                             <input type="text" class="form-control date-pick input_name" value="" name="name">
                             <p class="error error_name"></p>
                         </div>
+                        <div class="form-group">
+                            <label>Preview Image</label>
+                            <input type="file" class="form-control date-pick input_name" value="" name="preview">
+                            <p class="error error_preview"></p>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" href="#0">Save</button>
@@ -320,6 +355,11 @@
                             <input type="text" class="form-control date-pick input_name" value="" name="name">
                             <input type="hidden" class="form-control date-pick input_id" value="" name="id">
                             <p class="error error_name"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Preview Image</label>
+                            <input type="file" class="form-control date-pick input_name" value="" name="preview">
+                            <p class="error error_preview"></p>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -1,10 +1,10 @@
 function loadAdminHotel(payload,createState = true) {
     let image;
 
-    if(!payload.preview_image.length) {
-        image = "/img/no-image.jpg"
+    if(payload.preview) {
+        image = `\\images\\small\\${payload.preview.name}`
     } else {
-        image = `\\images\\small\\${payload.preview_image[0].name}`
+        image = "/img/no-image.jpg"
     }
 
     let build = ` <ul class="booking_list">
@@ -22,6 +22,7 @@ function loadAdminHotel(payload,createState = true) {
                         <div class="col-md-5">
                             <li><strong>Phone</strong>${payload.phone ?? 'Not Exist'}</li>
                             <li><strong>Email Address</strong>${payload.email ?? 'Not Exist'}</li>
+                            <li><strong>City</strong>${payload.city.name}</li>
                         </div>
                     </div>
                 </ul>
@@ -60,24 +61,42 @@ function loadAdminHotel(payload,createState = true) {
 }
 
 
-function loadAdminCity(payload) {
-    return `<li class="pl-3 mb-4 city_element" id="${payload.id}">
-    <ul class="booking_list">
-        <div class="row">
-            <div class="col-md-6">
-                <li><strong>id</strong> #${payload.id}</li>
-                <li><strong>Name</strong> ${payload.name}</li>
-            </div>
-        </div>
-    </ul>
-    <div class="d-flex">
-        <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#edit_city" modal="city" modal_class=".edit_city" modal_id="${payload.id}">
-            <i class="fa fa-fw fa-pencil"></i> Edit city
-        </a>
+function loadAdminCity(payload,createState = true) {
+    console.log(payload.image);
+    if(!payload.image) {
+        image = "/img/no-image.jpg"
+    } else {
+        image = `\\images\\small\\${payload.image.name}`
+    }
 
-        <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_city_modal" modal_id="${payload.id}">
-            <i class="fa fa-trash"></i> Delete city
-        </a>
-    </div>
-</li>`
+    let build =  `
+        <ul class="booking_list">
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="preview" src="${image}">
+                </div>
+                <div class="col-md-6">
+                    <li><strong>id</strong> #${payload.id}</li>
+                    <li><strong>Name</strong>${payload.name}</li>
+                </div>
+            </div>
+        </ul>
+        <div class="d-flex">
+            <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#edit_city" modal="city" modal_class=".edit_city" modal_id="${payload.id}">
+                <i class="fa fa-fw fa-pencil"></i> Edit city
+            </a>
+
+            <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_modal" modal_id="${payload.id}" modal="city">
+                <i class="fa fa-trash"></i> Delete Hotel
+            </a>
+        </div>`
+
+    if(createState) {
+        build =  `
+        <li class="pl-3 mb-4 city_element" id="${payload.id}">
+            ${build}
+        </li>`
+    }
+
+    return build;
 }

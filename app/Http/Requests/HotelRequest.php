@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\City;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Validator;
 
@@ -49,6 +50,13 @@ class HotelRequest extends FormRequest
             'name' => ['required'],
             'description' => ['required'],
             'min_days' => ['required'],
+            'city_id' => ['required',function($value,$attribute,$fail){
+                $citiesCount = City::find($this->city_id)->count();
+                
+                if(! $citiesCount) {
+                    return $fail('You have to select city');
+                }
+            }],
             'price' => [function($value,$attribute,$fail){
                 $prices = json_decode($this->price,true);
 

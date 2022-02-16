@@ -31,6 +31,9 @@ Citites
             <li class="pl-3 mb-4 city_element" id="{{ $city->id }}">
                 <ul class="booking_list">
                     <div class="row">
+                        <div class="col-md-2">
+                            <img class="preview" src="@if($city->image) {{ asset('/images/small/'.$city->image->name) }} @else {{ asset('img/no-image.jpg') }} @endif">
+                        </div>
                         <div class="col-md-6">
                             <li><strong>id</strong> #{{$city->id}}</li>
                             <li><strong>Name</strong> {{$city->name}}</li>
@@ -51,21 +54,8 @@ Citites
            </ul>
     </div>
 </div>
-<!-- /box_general-->
-<!-- <nav aria-label="...">
-    <ul class="pagination pagination-sm add_bottom_30">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav> -->
-<!-- Booking/order Modal -->
+<div class="pagination" container_class=".city_list" action="empty_fill" modal="city" load="loadAdminCity" url="{{ route('city.filter') }}"></div>
+<input class="page-indicator" value="1" type="hidden">
 @include('admin.models')
 @endsection
 

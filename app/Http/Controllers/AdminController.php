@@ -15,21 +15,22 @@ class AdminController extends Controller
 
     public function hotel(Request $request)
     {
-        $hotels = Hotel::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 2);
-
+        $hotels = Hotel::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
         if($request->ajax()) {
             return $hotels;
         }
 
         return view('admin.Pages.hotel')->with([
-            'hotels' => $hotels
+            'hotels' => $hotels,
+            'cities' => City::all()
         ]);
     }
 
-    public function city() 
+    public function city(Request $request) 
     {
+        $cities = City::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 1);
         return view('admin.Pages.city')->with([
-            'cities' => City::all()
+            'cities' => $cities
         ]);
     }
 

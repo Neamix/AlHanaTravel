@@ -48,7 +48,7 @@ $(document).on('click','.edit_btn',function(){
     let modal_class = $(this).attr('modal_class');
     let modal = $(this).attr('modal');
     let modal_id = $(this).attr('modal_id');
-
+    console.log(modal_id);
     $.ajax({
         url: `${modal}/${modal_id}`,
         success: (modal) => {
@@ -57,7 +57,10 @@ $(document).on('click','.edit_btn',function(){
             for(element in modal) {
                 let val = modal[element];
                 let input_class = $(`${modal_class} .input_${element}`);
+                let select_class = $(`${modal_class} .select_${element}`)
                 input_class.val(val);
+                console.log(select_class,val,`.select_${element}`);
+                select_class.val(val);
             }
 
             //add hotel prices quotes 
@@ -78,7 +81,8 @@ $(document).on('click','.edit_btn',function(){
                     })
                 }
             } else if ( modal_class == '.gallary_show' ) {
-                let gallary_images = modal.get_gallary;
+                console.log(modal);
+                let gallary_images = modal.images;
                 
                 $('.hotel_images_recent').html('');
 

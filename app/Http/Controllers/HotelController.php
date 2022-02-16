@@ -23,7 +23,7 @@ class HotelController extends Controller
 
     public function filter(Request $request)
     {
-        return  Hotel::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 2);
+        return  Hotel::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
 
     }
 

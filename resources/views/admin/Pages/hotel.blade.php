@@ -44,7 +44,7 @@ Hotels
                 <ul class="booking_list">
                     <div class="row">
                         <div class="col-md-2">
-                            <img src="@if($hotel->previewImage()->count()){{ asset('images/small/'.$hotel->previewImage[0]->name) }}@else {{ asset('img/no-image.jpg') }} @endif" class="w-100 preview">
+                            <img src="@if($hotel->preview){{ asset('images/small/'.$hotel->preview->name) }}@else {{ asset('img/no-image.jpg') }} @endif" class="w-100 preview">
                         </div>
                         <div class="col-md-4">
                             <li><strong>Name</strong> {{ $hotel->name }} </li>
@@ -56,6 +56,7 @@ Hotels
                         <div class="col-md-5">
                             <li><strong>Phone</strong> {{ $hotel->phone ?? 'Not Exist' }}</li>
                             <li><strong>Email Address</strong>{{ $hotel->email ?? 'Not Exist' }}</li>
+                            <li><strong>City</strong>{{ $hotel->city->name }}</li>
                         </div>
                     </div>
                 </ul>
