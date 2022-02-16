@@ -92,6 +92,6 @@ Hotels
 
 @section('script')
 <script src="{{ asset('vendor/dropzone.min.js') }}"></script>
-<script src="{{ asset('js/admin_image_upload.js') }}"></script>
+<script src="{{ asset('js/admin/admin_image_upload.js') }}"></script>
 @include('admin.js-blades.js-hotel')
 @endsection

@@ -1,12 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CityController;
+use App\Http\Controllers\admin\CityController;
 use App\Http\Controllers\HotelController;
-use App\Http\Controllers\TravelController;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------

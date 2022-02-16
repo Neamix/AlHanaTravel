@@ -9,9 +9,9 @@
 <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.js') }}"></script>
     <script src="{{ asset('vendor/jquery.magnific-popup.min.js') }}"></script>
 <!-- Custom scripts for all pages-->
-<script src="{{ asset('js/component.js') }}"></script>
-<script src="{{ asset('js/admin.js') }}"></script>
-<script src="{{ asset('js/initFunc.js') }}"></script>
-<script src="{{ asset('js/paginator.js') }}"></script>
+<script src="{{ asset('js/admin/component.js') }}"></script>
+<script src="{{ asset('js/admin/admin.js') }}"></script>
+<script src="{{ asset('js/admin/initFunc.js') }}"></script>
+<script src="{{ asset('js/admin/paginator.js') }}"></script>
 <!-- Custom scripts for this page-->
 @yield('script')
