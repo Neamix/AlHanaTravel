@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CityController;
+use App\Http\Controllers\front\FrontController;
 use App\Http\Controllers\HotelController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/',[FrontController::class,'index']);
 
 Route::group(['prefix' => 'hotel'],function(){
     Route::post('/filter',[HotelController::class,'filter'])->name('hotel.filter');
