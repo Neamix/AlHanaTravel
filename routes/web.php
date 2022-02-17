@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\admin\CityController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\front\FrontController;
 use App\Http\Controllers\HotelController;
 use Illuminate\Support\Facades\Route;

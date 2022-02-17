@@ -50,6 +50,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 /*============================================================================================*/
 /* MAIN NAVIGATION */
 /* All styles for screen size over 992px*/
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
 @media only screen and (min-width: 992px) {
   nav#menu.main-menu {
     display: block !important;
@@ -411,7 +412,7 @@ body {
   background: #f8f8f8;
   font-size: 0.875rem;
   line-height: 1.6;
-  font-family: "Poppins", Helvetica, sans-serif;
+  font-family: "Cairo", "Helvetica" !important;
   color: #555;
 }
 
@@ -4911,7 +4912,7 @@ a.social_bt.linkedin:before {
   background: white;
   position: relative;
   z-index: 999;
-  font-family: "Poppins", Helvetica, sans-serif;
+  font-family: "Cairo", Helvetica, sans-serif;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.12);
 }
 .marker_info img {
@@ -6865,7 +6866,7 @@ a.address:hover {
   -moz-border-radius: 4px !important;
   -ms-border-radius: 4px !important;
   border-radius: 4px !important;
-  font-family: "Poppins", Helvetica, sans-serif;
+  font-family: "Cairo", Helvetica, sans-serif;
   color: #555;
   -webkit-box-shadow: 0 12px 35px 2px rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 12px 35px 2px rgba(0, 0, 0, 0.12);
@@ -7491,7 +7492,7 @@ a.address:hover {
 
 .leaflet-popup-content {
   margin: 0;
-  font-family: "Poppins", Helvetica, sans-serif;
+  font-family: "Cairo", Helvetica, sans-serif;
   position: relative;
 }
 .leaflet-popup-content img {
@@ -8782,7 +8783,7 @@ a#forgot {
 
 /*-------- 3.9 Datepicker --------*/
 .daterangepicker {
-  font-family: "Poppins", Helvetica, sans-serif !important;
+  font-family: "Cairo", Helvetica, sans-serif !important;
 }
 
 /* Fix for scroll issue */

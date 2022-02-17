@@ -17,9 +17,6 @@ class Hotel extends Model
 
     static function upsertInstance($data) 
     {
-        $dimintionsArray = [
-            'small' => '400X270',
-        ];
         
         $hotel = self::updateOrCreate(
             ['id' => $data->id],
@@ -48,6 +45,11 @@ class Hotel extends Model
         }
 
         if(! empty($data->main_image)) {
+            
+            $dimintionsArray = [
+                'small' => '400X270',
+            ];
+
             Image::storePreview($data->main_image,$dimintionsArray,$hotel);
         }
 
