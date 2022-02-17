@@ -3,6 +3,7 @@
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\front\FrontController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,8 @@ Route::group(['prefix' => 'hotel'],function(){
 
 Route::group(['prefix' => 'city'],function(){
     Route::post('/filter',[CityController::class,'filter'])->name('city.filter');
+});
+
+Route::group(['prefix' => 'slider'],function(){
+    Route::post('/filter',[SliderController::class,'filter'])->name('slider.filter');
 });

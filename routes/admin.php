@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TravelController;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
@@ -26,6 +27,13 @@ Route::group(['prefix' => 'city'],function(){
     Route::get('/{city}',[CityController::class,'getCity'])->name('city.get');
     Route::post('/upsert',[CityController::class,'upsert'])->name('city.upsert');
     Route::post('/delete/{city}',[CityController::class,'delete'])->name('city.delete');
+});
+
+Route::group(['prefix' => 'slider'],function(){
+    Route::get('/',[AdminController::class,'slider'])->name('slider.index');
+    Route::get('/{slider}',[SliderController::class,'getSlider'])->name('slider.get');
+    Route::post('/upsert',[SliderController::class,'upsert'])->name('slider.upsert');
+    Route::post('/delete/{slider}',[SliderController::class,'delete'])->name('slider.delete');
 });
 
 
