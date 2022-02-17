@@ -22,7 +22,7 @@ class City extends Model
         );
 
         if($data->preview) {
-            Image::storePreview($data->preview,['small' => '420X267'],$city);
+            Image::storePreview($data->preview,['small' => '420X267','large' => '1600X1060'],$city);
         }
 
         return self::validateResult('success',$city->load(['image']));
@@ -46,7 +46,8 @@ class City extends Model
         return $this->belongsTo(Image::class);
     }
 
-    public function hotels() {
-        return $this->belongsToMany(Hotel::class);
+    public function hotels() 
+    {
+        return $this->hasMany(Hotel::class,'city_id');
     }
 }

@@ -23,6 +23,12 @@
             <span class="nav-link-text">Cities <span class="badge badge-pill badge-primary">6 New</span></span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
+          <a class="nav-link" href="{{ route('slider.index') }}">
+            <i class="fa fa-fw fa-calendar-check-o"></i>
+            <span class="nav-link-text">Slider <span class="badge badge-pill badge-primary">6 New</span></span>
+          </a>
+        </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings">
             <i class="fa fa-fw fa-list"></i>

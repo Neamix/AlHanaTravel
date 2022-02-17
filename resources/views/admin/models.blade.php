@@ -338,6 +338,7 @@
     </div>
 </div>
 
+
 <div class="modal fade edit_city" id="edit_city" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true" data="edit">
     <div class="modal-dialog wide"  role="document">
         <div class="modal-content">
@@ -372,6 +373,80 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="add_new_slider" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true" data="add">
+    <div class="modal-dialog wide"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="client_detail_modalLabel">Add new slider</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="add_slider_form" data="add">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Slider text</label>
+                            <input type="text" class="form-control date-pick input_text" value="" name="text">
+                            <p class="error error_text"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Slider title</label>
+                            <input type="text" class="form-control date-pick input_title" value="" name="title">
+                            <p class="error error_title"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Preview Image</label>
+                            <input type="file" class="form-control date-pick" value="" name="image">
+                            <p class="error error_image"></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" href="#0">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade edit_slider" id="edit_slider" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true" data="edit">
+    <div class="modal-dialog wide"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="client_detail_modalLabel">Edit slider</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="edit_slider_form">
+                    <div class="form-group">
+                        <label>Slider text</label>
+                        <input type="text" class="form-control date-pick input_text" value="" name="text">
+                        <p class="error error_text"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Slider title</label>
+                        <input type="text" class="form-control date-pick input_title" value="" name="title">
+                        <p class="error error_title"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Preview Image</label>
+                        <input type="file" class="form-control date-pick input_name" value="" name="image">
+                        <p class="error error_preview"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" href="#0">Save</button>
+                    </div>
+                    <input type="hidden" class="form-control date-pick input_id" value="" name="id">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade images_upload_model" id="image_upload" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true" data="edit">
     <div class="modal-dialog  gallary_modal"  role="document">

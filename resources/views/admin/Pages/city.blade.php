@@ -5,10 +5,6 @@
 Citites
 @endsection
 
-@section('css')
-<link href="{{ asset('vendor/dropzone.css') }}" rel="stylesheet">
-@endsection
-
 @section('content')
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">

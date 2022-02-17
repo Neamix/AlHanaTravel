@@ -1,12 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\front\FrontController;
 use App\Http\Controllers\HotelController;
-use App\Http\Controllers\TravelController;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +17,16 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+Route::get('/',[FrontController::class,'index']);
+
 Route::group(['prefix' => 'hotel'],function(){
     Route::post('/filter',[HotelController::class,'filter'])->name('hotel.filter');
 });
 
 Route::group(['prefix' => 'city'],function(){
     Route::post('/filter',[CityController::class,'filter'])->name('city.filter');
+});
+
+Route::group(['prefix' => 'slider'],function(){
+    Route::post('/filter',[SliderController::class,'filter'])->name('slider.filter');
 });
