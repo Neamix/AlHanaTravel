@@ -22,7 +22,7 @@ class City extends Model
         );
 
         if($data->preview) {
-            Image::storePreview($data->preview,['small' => '420X267','large' => '1600X1060'],$city);
+            Image::storePreview($data->preview,['small' => '420X267'],$city);
         }
 
         return self::validateResult('success',$city->load(['image']));
