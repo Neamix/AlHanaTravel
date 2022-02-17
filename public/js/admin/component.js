@@ -100,3 +100,44 @@ function loadAdminCity(payload,createState = true) {
 
     return build;
 }
+
+function loadAdminSlider(payload,createState = true) {
+    console.log(payload);
+    if(!payload.image) {
+        image = "/img/no-image.jpg"
+    } else {
+        image = `\\images\\small\\${payload.image.name}`
+    }
+
+    let build =  `
+        <ul class="booking_list">
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="preview" src="${image}">
+                </div>
+                <div class="col-md-6">
+                    <li><strong>id</strong> #${payload.id}</li>
+                    <li><strong>Text</strong> ${payload.text}</li>
+                    <li><strong>Title</strong> ${payload.title}</li>
+                </div>
+            </div>
+        </ul>
+        <div class="d-flex">
+            <a href="#0" class="btn_1 gray edit_btn" data-toggle="modal" data-target="#edit_slider" modal="slider" modal_class=".edit_slider" modal_id="${payload.id}">
+                <i class="fa fa-fw fa-pencil"></i> Edit slider
+            </a>
+
+            <a href="#0" class="btn_1 gray delete_btn ml-2" data-toggle="modal" data-target="#delete_modal" modal_id="${payload.id}" modal="slider">
+                <i class="fa fa-trash"></i> Delete Hotel
+            </a>
+        </div>`
+
+    if(createState) {
+        build =  `
+        <li class="pl-3 mb-4 slider_element" id="${payload.id}">
+            ${build}
+        </li>`
+    }
+
+    return build;
+}
