@@ -47,7 +47,7 @@ class Hotel extends Model
         if(! empty($data->main_image)) {
             
             $dimintionsArray = [
-                'small' => '400X270',
+                'small' => '500X370',
             ];
 
             Image::storePreview($data->main_image,$dimintionsArray,$hotel);
