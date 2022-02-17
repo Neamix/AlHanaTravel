@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\City;
+use App\Models\Slider;
 use Livewire\Component;
 
 class CitiesSlider extends Component
 {
     public function render()
     {
-        return view('livewire.cities-slider',['cities'=>City::all()]);
+        return view('livewire.city-slider',['sliders'=> Slider::all()]);
     }
 }
