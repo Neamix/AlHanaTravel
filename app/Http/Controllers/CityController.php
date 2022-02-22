@@ -26,7 +26,7 @@ class CityController extends Controller
     }
 
     public function filter(Request $request) {
-        return City::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 1);
+        return City::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
     }
 
     public function getCity(City $city) 
