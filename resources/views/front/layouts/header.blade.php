@@ -3,6 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
 <meta name="author" content="Ansonika">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
 
 <!-- Favicons-->
@@ -70,3 +72,4 @@
         background: rgba(204, 204, 204, 1)
     }
 </style>
+@livewireScripts
