@@ -87,9 +87,9 @@ class Hotel extends Model
             $query->where('name','like',"%$filter->name%");
         }
 
-        if(isset($filter->city_id)) {
-            $query->where('city_id',$filter->city_id);
-        }
+        // if(isset($filter->city_id)) {
+        //     $query->where('city_id',$filter->city_id);
+        // }
 
     }
 
