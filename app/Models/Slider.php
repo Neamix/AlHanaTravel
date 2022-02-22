@@ -19,6 +19,8 @@ class Slider extends Model
         ['id' => $data->id],
         [
             'text' => $data->text,
+            'button_text' => $data->button_text,
+            'url'  => $data->button_url,
             'title' => $data->title
         ]);
         // dd($slider);
