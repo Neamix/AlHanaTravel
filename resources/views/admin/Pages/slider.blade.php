@@ -20,7 +20,7 @@ Slider
     </div>
     <div class="list_general">
             @if(!count($sliders))
-                <p class="w-100 text-center out_content mb-3 mt-3 pb-3 empty_text">No cities to view</p>
+                <p class="w-100 text-center out_content mb-3 mt-3 pb-3 empty_text">No sliders to view</p>
             @endif
            <ul class="slider_list">
            @foreach($sliders as $slider)
@@ -32,7 +32,7 @@ Slider
                         </div>
                         <div class="col-md-6">
                             <li><strong>id</strong> #{{$slider->id}}</li>
-                            <li><strong>Text</strong> {{$slider->text}}</li>
+                            <li><strong>Text</strong> {!!$slider->text!!}</li>
                             <li><strong>Title</strong> {{$slider->title}}</li>
                         </div>
                     </div>
@@ -57,5 +57,15 @@ Slider
 @endsection
 
 @section('script')
+<script>
+    console.log('summernote');
+   $('#summernote').summernote({
+        fontNames: ['Cairo','San-serif'],
+        fontNamesIgnoreCheck: ['Cairo','San-serif'],
+        toolbar: [
+            ['fontname', ['fontname']],
+        ]
+    });
+</script>
 @include('admin.js-blades.js-slider')
 @endsection
