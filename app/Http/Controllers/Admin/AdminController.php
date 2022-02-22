@@ -30,7 +30,7 @@ class AdminController extends Controller
 
     public function city(Request $request) 
     {
-        $cities = City::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 1);
+        $cities = City::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
         return view('admin.Pages.city')->with([
             'cities' => $cities
         ]);
