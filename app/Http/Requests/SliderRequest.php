@@ -27,6 +27,8 @@ class SliderRequest extends FormRequest
         return [
             'title' => ['required'],
             'text'  => ['required'],
+            'button_text' => ['required'],
+            'button_url'  => ['required'],
             'image' => [Rule::requiredIf( ! $this->id ),'image']
         ];
     }
