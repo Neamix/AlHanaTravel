@@ -9,6 +9,7 @@ class Mailer {
     static function verifyUser($user,$token) {
         $send['title'] = 'Verify Account';
         $send['desc']  = 'مرحبا بك في الهنا ترافيل لاستكمال بينات حسابك برجاء الضغط علي الزر الذي بالاسفل';
+        $send['title'] = 'تفعيل حساب';
         $send['email'] = $user->email;
         $send['name']  = $user->name;
         $send['token'] = $token;
@@ -18,11 +19,12 @@ class Mailer {
     }
 
     static function forgetPassword($user,$token) {
-        $send['title'] = 'Forget Password';
+        $send['title'] = 'اعاده تعيين كلمة السر';
         $send['email'] = $user->email;
         $send['desc']  = 'لاعاده تعيين كلمة المرور الخاصه بك الرجاء الضغط علي الزر الذي بلاسفل';
         $send['name']  = $user->name;
         $send['token'] = $token;
+        $send['url']   = "$token?email=$user->email";
         $send['view']  = 'emails.user.verify';
         self::sendEmail($send);
     }

@@ -29,6 +29,6 @@ class DefaultEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown($this->data['view'])->with(['data' => $this->data]);
+        return $this->markdown($this->data['view'])->subject($this->data['title'])->with(['data' => $this->data]);
     }
 }

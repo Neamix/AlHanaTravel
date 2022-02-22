@@ -415,6 +415,11 @@ body {
   font-family: "Cairo", "Helvetica" !important;
   color: #555;
 }
+/*Auth*/
+.auth {
+  background-color: #fff;
+}
+
 
 h1,
 h2,
@@ -8059,6 +8064,21 @@ ul.share-buttons li i {
 .modal {
   z-index: 9999;
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Bootstrap Card Default*/
+
+.card .card-header {
+  background-color: #fff;
+}
+
+.card button {
+  background: var(--danger);
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 22px !important;
+  border-radius: 20px;
+  font-size: 12px;
 }
 
 /*-------- 3.2 Accordion --------*/
