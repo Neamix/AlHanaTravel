@@ -38,7 +38,7 @@ class AdminController extends Controller
 
     public function slider(Request $request) 
     {
-        $sliders = Slider::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 1);
+        $sliders = Slider::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
         return view('admin.Pages.slider')->with([
             'sliders' => $sliders
         ]);

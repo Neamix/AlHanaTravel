@@ -387,14 +387,24 @@
                 <form class="add_slider_form" data="add">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Slider text</label>
-                            <input type="text" class="form-control date-pick input_text" value="" name="text">
-                            <p class="error error_text"></p>
-                        </div>
-                        <div class="form-group">
                             <label>Slider title</label>
                             <input type="text" class="form-control date-pick input_title" value="" name="title">
                             <p class="error error_title"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Slider text</label>
+                            <textarea class="summernote" name="text" class="input_text" value=""></textarea>
+                            <p class="error error_text"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Button url</label>
+                            <input type="text" class="form-control date-pick input_title" value="" name="button_url">
+                            <p class="error error_button_url"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Button text</label>
+                            <input  name="button_text" class="input_button_text form-control"></textarea>
+                            <p class="error error_button_text"></p>
                         </div>
                         <div class="form-group">
                             <label>Preview Image</label>
@@ -422,20 +432,32 @@
             </div>
             <div class="modal-body">
                 <form class="edit_slider_form">
-                    <div class="form-group">
-                        <label>Slider text</label>
-                        <input type="text" class="form-control date-pick input_text" value="" name="text">
-                        <p class="error error_text"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Slider title</label>
-                        <input type="text" class="form-control date-pick input_title" value="" name="title">
-                        <p class="error error_title"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Preview Image</label>
-                        <input type="file" class="form-control date-pick input_name" value="" name="image">
-                        <p class="error error_preview"></p>
+                <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Slider title</label>
+                            <input type="text" class="form-control date-pick input_title" value="" name="title">
+                            <p class="error error_title"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Slider text</label>
+                            <textarea class="summernote" name="text" class="input_text"></textarea>
+                            <p class="error error_text"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Button url</label>
+                            <input type="text" class="form-control date-pick input_url" value="" name="button_url">
+                            <p class="error error_button_url"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Button text</label>
+                            <input  name="button_text" class="input_button_text form-control"></textarea>
+                            <p class="error error_button_text"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Preview Image</label>
+                            <input type="file" class="form-control date-pick" value="" name="image">
+                            <p class="error error_image"></p>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" href="#0">Save</button>

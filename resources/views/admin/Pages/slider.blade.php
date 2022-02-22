@@ -32,7 +32,7 @@ Slider
                         </div>
                         <div class="col-md-6">
                             <li><strong>id</strong> #{{$slider->id}}</li>
-                            <li><strong>Text</strong> {!!$slider->text!!}</li>
+                            <li><strong>Text</strong> {{ substr(strip_tags($slider->text),0,100) }}</li>
                             <li><strong>Title</strong> {{$slider->title}}</li>
                         </div>
                     </div>
@@ -59,13 +59,9 @@ Slider
 @section('script')
 <script>
     console.log('summernote');
-   $('#summernote').summernote({
-        fontNames: ['Cairo','San-serif'],
-        fontNamesIgnoreCheck: ['Cairo','San-serif'],
-        toolbar: [
-            ['fontname', ['fontname']],
-        ]
-    });
+   $('.summernote').summernote({
+       toolbar: []
+   });
 </script>
 @include('admin.js-blades.js-slider')
 @endsection

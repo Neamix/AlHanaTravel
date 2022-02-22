@@ -25,6 +25,8 @@
   <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
   <!-- Plugin styles -->
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+  <link href="{{ asset('editor/summernote.css') }}" rel="stylesheet">
+
   <!-- Your custom styles -->
   <link href="{{ asset('css/admin/custom.css') }}" rel="stylesheet">
   
