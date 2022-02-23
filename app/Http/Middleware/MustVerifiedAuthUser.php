@@ -21,7 +21,7 @@ class MustVerifiedAuthUser
         if( Auth::check() ) {
             if(Auth::user()->password == null || Auth::user()->email_verified_at == null) {
 
-               $allowed_names = ['verify.resend','verify.account','verify.email','password.reset','password.email','password.update'];
+               $allowed_names = ['verify.resend','verify.account','verify.email','password.reset','password.email','password.update','logout'];
                if(isset( Route::getCurrentRoute()->action['as'])) {
                     if( ! in_array(Route::getCurrentRoute()->action['as'],$allowed_names) ) {
                         return redirect()->route('verify.account');

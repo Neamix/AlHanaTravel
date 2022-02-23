@@ -5,6 +5,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TravelController;
+use App\Http\Controllers\UserController;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +35,12 @@ Route::group(['prefix' => 'slider'],function(){
     Route::get('/{slider}',[SliderController::class,'getSlider'])->name('slider.get');
     Route::post('/upsert',[SliderController::class,'upsert'])->name('slider.upsert');
     Route::post('/delete/{slider}',[SliderController::class,'delete'])->name('slider.delete');
+});
+
+Route::group(['prefix' => 'user'],function(){
+    Route::get('/',[AdminController::class,'hotel'])->name('user.index');
+    Route::get('/{user}',[UserController::class,'getHotel'])->name('user.get');
+    Route::post('/delete/{user}',[UserController::class,'delete'])->name('user.delete');
 });
 
 

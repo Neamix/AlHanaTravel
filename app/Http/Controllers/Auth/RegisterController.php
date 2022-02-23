@@ -80,6 +80,7 @@ class RegisterController extends Controller
         $user = User::getUserBelongToEmail($request['email']);
 
         if($user)  {
+            $user->modifyInstance($request);
             Auth::loginUsingId($user->id);
             return redirect('/');
         }

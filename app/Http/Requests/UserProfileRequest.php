@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 
 class UserProfileRequest extends FormRequest
 {
@@ -25,8 +27,32 @@ class UserProfileRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'phone' => ['digits:11','required'],
-            'birthday' => ['date']
+            'phone' => [function($value,$attribute,$fail){
+                if($this->phone) {
+                    $validate = Validator::make($this->all(),[
+                        'phone' => 'digits:11'
+                    ]);
+
+                    if($validate->fails()) {
+                        return $fail($validate->errors()->messages());
+                    }
+                }
+            }],
+            'birthday' => [function($value,$attribute,$fail){
+                if($this->birthday) {
+
+
+                    $validate = $this->validate([
+                        'birthday' => 'date'
+                    ]);
+
+                    $now = date('Y-m-d');
+
+                    if($now < $this->birthday) {
+                        return $fail('يجب ان تدخل تاريخ قديم');
+                    }
+                }
+            }]
         ];
     }
 }

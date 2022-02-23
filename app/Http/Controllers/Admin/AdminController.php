@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Hotel;
 use App\Models\Slider;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -41,6 +42,14 @@ class AdminController extends Controller
         $sliders = Slider::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
         return view('admin.Pages.slider')->with([
             'sliders' => $sliders
+        ]);
+    }
+
+    public function user(Request $request) 
+    {
+        $users = User::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
+        return view('admin.Pages.users')->with([
+            'users' => $users
         ]);
     }
 

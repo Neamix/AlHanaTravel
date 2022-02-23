@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
             }
            
         } else {
-            $user = self::createInstance($user,['password' => Str::random(60),'email_verified_at' => Carbon::now() ]);
+            $user = self::createInstance($data,['password' => Str::random(60),'email_verified_at' => Carbon::now() ]);
         }
 
         Auth::loginUsingId($user->id);
@@ -71,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function modifyInstance($data)
     {
-        Auth::user()->update($data->except(['password','email']));
+        $this->update($data->except(['password','email']));
         return self::validateResult('success',[$data]);
     }
 
@@ -91,10 +91,10 @@ class User extends Authenticatable implements MustVerifyEmail
             ['email' => $data->email],
             [
                 'email' => $data->email,
-                'phone' => $data->phone,
+                'phone' => $data->phone ?? null,
                 'name'  => $data->name,
                 'password' => $additional['password'] ?? null,
-                'emai_verified_at' => $additional['email_verified_at'] ?? null
+                'email_verified_at' => $additional['email_verified_at'] ?? null
             ]
         );
 
@@ -125,9 +125,34 @@ class User extends Authenticatable implements MustVerifyEmail
         Mailer::verifyUser($this,$token);
     }
 
-    public function getUserBelongToEmail($email) {
+    public function getUserBelongToEmail($email) 
+    {
 
         $user = self::where('email',$email)->first();
         return $user;
+    }
+
+    public function isAdmin()
+    {
+        if($this->role_id == ADMIN || $this->role_id == SUPERADMIN) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isSuperAdmin()
+    {
+        if($this->role_id == SUPERADMIN) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteInstance()
+    {
+        $this->delete();
+        return self::validateResult('success',$this);
     }
 }

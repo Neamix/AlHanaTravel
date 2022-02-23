@@ -34,9 +34,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name" class="mb-2">تاريخ الميلاد</label>
                         <div class="row">
                             <div class="col-md-6">
+                                <label for="name" class="mb-2">تاريخ الميلاد</label>
                                 <input type="date" value="{{Auth::user()->birthday}}" class="form-control" name="birthday">
                                 <p class="error error_birthday"></p>
                                 @error('birthday')
@@ -46,6 +46,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
+                                <label for="name" class="mb-2"> الهاتف المحمول</label>
                                 <input type="number" value="{{Auth::user()->phone}}" class="form-control" name="phone">
                                 <p class="error error_phone"></p>
                                 @error('date')
@@ -70,13 +71,30 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary mt-3 mb-3">حفظ البينات</button>
+                    <button class="btn btn-primary mt-3 mb-3 loader-key d-flex" loader_name="user_profile_loader">
+                    <div class="loader user_profile_loader data d-none"></div>
+                    حفظ البينات
+                    </button>
                 </form>
             </div>
             <div class="card-footer">
 
             </div>
         </Div>
+        <div class="card">
+            <div class="card-header">
+                <h2>تسجيل خروج</h2>
+            </div>
+            <div class="card-body">
+                <p>في حالة الخروج من هذه الجلسه اي بينات لم تحفظ لن تسجل لدينا</p>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="btn btn-primary mt-3 mb-3 loader-key d-flex" loader_name="user_profile_loader">
+                        تسجيل خروج
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
     

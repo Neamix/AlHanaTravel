@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserProfileRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -31,6 +32,11 @@ class UserController extends Controller
 
     public function updatePersonalInfo(UserProfileRequest $request)
     {
-        return User::modifyInstance($request);
+        return Auth::user()->modifyInstance($request);
+    }
+
+    public function deleteInstance(User $user)
+    {
+        return $user->deleteInstance();
     }
 }
