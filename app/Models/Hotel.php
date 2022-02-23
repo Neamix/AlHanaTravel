@@ -30,6 +30,7 @@ class Hotel extends Model
                 'city_id' => $data->city_id,
                 'min_days' => $data->min_days,
                 'description' => $data->description,
+                'view_desc' => $data->view_description
             ]
         );
         

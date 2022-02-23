@@ -7755,7 +7755,6 @@ a.btn_explore:hover {
 }
 
 .call_section {
-  background: url(../img/bg_call_section.jpg) center center no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

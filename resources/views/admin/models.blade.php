@@ -54,6 +54,13 @@
                         </div>
                     </div>
                     <div class="col-md-12">
+                        <div class="form-group">
+                            <label>View Description</label>
+                            <textarea class="form-control date-pick input_stars" value="" name="view_description" max="5" min="0">
+                            <p class="error error_stars"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
                     <div class="form-group">
                         <label>Prices</label>
                         <div class="price_list">
@@ -199,6 +206,13 @@
                             <p class="error error_email"></p>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="summernote input_description" name="description" class="input_text" value=""></textarea>
+                            <p class="error error_description"></p>
+                        </div>
+                    </div>
                 </div>
                 <!-- /Row -->
                 <div class="row">
@@ -221,6 +235,13 @@
                             <label>Stars</label>
                             <input type="number" class="form-control date-pick input_stars" value="" name="stars" max="5" min="0">
                             <p class="error error_stars"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>View Description</label>
+                            <textarea class="form-control date-pick input_view_desc" value="" name="view_desc" max="5" min="0"></textarea>
+                            <p class="error error_view_description"></p>
                         </div>
                     </div>
                     <div class="col-md-12">
