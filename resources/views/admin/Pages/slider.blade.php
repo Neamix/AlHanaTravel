@@ -60,7 +60,7 @@ Slider
 <script>
     console.log('summernote');
    $('.summernote').summernote({
-       toolbar: []
+        toolbar: [],
    });
 </script>
 @include('admin.js-blades.js-slider')

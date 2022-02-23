@@ -52,16 +52,23 @@ $(document).on('click','.edit_btn',function(){
     $.ajax({
         url: `${modal}/${modal_id}`,
         success: (modal) => {
-            console.log(modal_class);
             //add hotel main data
             for(element in modal) {
                 let val = modal[element];
                 let input_class = $(`${modal_class} .input_${element}`);
                 let select_class = $(`${modal_class} .select_${element}`)
+                console.log(element == 'description');
+                if(element == 'text' || element == 'description') {
+                    let getSummerParent = $(modal_class);
+                    let getSummer = getSummerParent.find(`.input_${element}`);
+                    console.log(getSummer);
+                    getSummerParent.find('.note-editable').html(val);
+                    getSummer.val(val);
+                }
                 input_class.val(val);
-                console.log(select_class,val,`.select_${element}`);
                 select_class.val(val);
             }
+
 
             //add hotel prices quotes 
             if( modal_class == '.edit_form'  ) {

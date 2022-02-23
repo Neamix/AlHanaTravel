@@ -118,7 +118,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea type="text" class="form-control date-pick input_description" value="" name="description" rows="10"></textarea>
+                            <textarea class="summernote input_description" name="description"></textarea>
                             <p class="error error_description"></p>
                         </div>
                     </div>
@@ -287,7 +287,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea type="text" class="form-control date-pick input_description" value="" name="description" rows="10"></textarea>
+                            <textarea class="summernote input_description" name="description" class="input_text" value=""></textarea>
                             <p class="error error_description"></p>
                         </div>
                     </div>
@@ -438,9 +438,9 @@
                             <input type="text" class="form-control date-pick input_title" value="" name="title">
                             <p class="error error_title"></p>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group summer-text">
                             <label>Slider text</label>
-                            <textarea class="summernote" name="text" class="input_text"></textarea>
+                            <textarea class="summernote input_text" name="text" class="input_text"></textarea>
                             <p class="error error_text"></p>
                         </div>
                         <div class="form-group">
