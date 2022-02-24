@@ -49,6 +49,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'user','middleware' => 'auth'],function(){
     Route::get('profile',[UserController::class,'profile']);
+    Route::post('/like/{hotel}',[UserController::class,'likeHotel'])->name('like.hotel');
     Route::post('profile/edit',[UserController::class,'updatePersonalInfo'])->name('update.personal.info');
 });
 

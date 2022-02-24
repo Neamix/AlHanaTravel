@@ -150,6 +150,20 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    public function toggleThisHotelLike($hotel_id) {
+        $this->likes()->toggle($hotel_id);
+    }
+
+    public function isLikedHotel($hotel_id)
+    {
+        return $this->likes()->where('hotels.id',$hotel_id)->count();
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Hotel::class,'likes');
+    }
+
     public function deleteInstance()
     {
         $this->delete();

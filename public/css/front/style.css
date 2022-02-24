@@ -7930,6 +7930,7 @@ ul.share-buttons li i {
 .nice-select.wide .list {
   left: 0 !important;
   right: 0 !important;
+  z-index: 1000;
 }
 .nice-select.right {
   float: right;

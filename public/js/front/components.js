@@ -20,4 +20,23 @@ function buildHotel(payload) {
         `    
 }
 
-{/* <span class="price">ابتداء من <strong>${payload.prices[0].price}</strong> /${payload.prices[0].quota}</span> */}
+
+function buildSmallDetailsHotel(payload) {
+    let image = `<div class="col-md-4">
+    <a href="hotel-detail.html" class="grid_item">
+        <figure>
+            <div class="score"><strong>${payload.city.name}</strong></div>
+        `
+        console.log(payload.preview.name.sing);
+        image +=   `<img src="images/small/${payload.preview.name ?? 'img/no-image'}" class="img-fluid" alt="">
+            <div class="info">
+                <div class="cat_star">
+                  
+                </div>
+                <h3>${ payload.name }</h3>
+            </div>
+        </figure>
+    </a>
+</div>`;
+return image;
+}

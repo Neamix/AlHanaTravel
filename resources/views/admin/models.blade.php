@@ -56,8 +56,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>View Description</label>
-                            <textarea class="form-control date-pick input_stars" value="" name="view_description" max="5" min="0">
-                            <p class="error error_stars"></p>
+                            <textarea class="form-control date-pick input_view_description" value="" name="view_description"></textarea>
+                            <p class="error error_view_description"></p>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -240,7 +240,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>View Description</label>
-                            <textarea class="form-control date-pick input_view_desc" value="" name="view_desc" max="5" min="0"></textarea>
+                            <textarea class="form-control date-pick input_view_desc" value="" name="view_desc"></textarea>
                             <p class="error error_view_description"></p>
                         </div>
                     </div>

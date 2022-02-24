@@ -17,7 +17,6 @@ class Hotel extends Model
 
     static function upsertInstance($data) 
     {
-        
         $hotel = self::updateOrCreate(
             ['id' => $data->id],
             [
@@ -30,7 +29,7 @@ class Hotel extends Model
                 'city_id' => $data->city_id,
                 'min_days' => $data->min_days,
                 'description' => $data->description,
-                'view_desc' => $data->view_description
+                'view_description' => $data->view_description
             ]
         );
         
@@ -84,13 +83,17 @@ class Hotel extends Model
     }
 
     public function scopeFilter($query,$filter) {
-        if(isset($filter->name)) {
+        if($filter->name) {
             $query->where('name','like',"%$filter->name%");
         }
 
-        // if(isset($filter->city_id)) {
-        //     $query->where('city_id',$filter->city_id);
-        // }
+        if($filter->city_id) {
+            $query->where('city_id',$filter->city_id);
+        }
+
+        if($filter->stars) {
+            $query->where('stars',$filter->stars);
+        }
 
     }
 

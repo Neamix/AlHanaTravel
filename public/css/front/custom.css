@@ -120,8 +120,24 @@
     border-radius: 100%;
 }
 
+.main_container {
+    min-height: 100vh;
+}
 
 /* loader */
+.trans {
+    transition: all .3s linear;
+}
+
+.main_loader {
+    display: none;
+}
+
+.push_and_hide {
+    position: relative;
+    top: 100px;
+    opacity: 0;
+}
 .loader.data {
     width: 15px;
     height: 15px;

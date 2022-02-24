@@ -42,6 +42,18 @@ $('.delete_form').on('submit',function(e){
             $('#delete_modal').modal('toggle');
         }
     });
+});
+
+$(document).on('click','.hotel_like',function(){
+    let hotel_id = $(this).attr('data_id');
+    console.log(hotel_id);
+    $.ajax({
+        url: `user/like/${hotel_id}`,
+        type: 'post',
+        success: function() {
+            console.log('here');
+        }
+    })
 })
 
 $(document).on('click','.edit_btn',function(){
