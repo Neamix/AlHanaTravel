@@ -1,5 +1,5 @@
 <div class="col-xl-3 col-lg-6 col-md-6">
-    <a href="restaurant-detail.html" class="grid_item">
+    <a href="{{ route('city.hotel',['city' => $city->id]) }}" class="grid_item">
         <figure>
             <img src="@if($city->image){{ asset('images/small/'.$city->image->name) }}@else {{ asset('img/no-image.jpg ') }} @endif" class="img-fluid" alt="">
             <div class="info">
