@@ -74,11 +74,11 @@ $('.edit_form,.add_form').on('submit',function(e){
             } else {
                 $(`li.hotel_element#${payload.id}`).html('').append(loadAdminHotel(payload,create_state))
             }
-
-            if(!payload.preview_image.length) {
+            console.log(payload);
+            if(!payload.preview) {
                 $(`li.hotel_element#${payload.id} .preview`).attr('src',"{{ asset('img/no-image.jpg') }}")
             } else {
-                $(`li.hotel_element#${payload.id} .preview`).attr('src',`\\images\\small\\${payload.preview_image[0].name}`)
+                $(`li.hotel_element#${payload.id} .preview`).attr('src',`\\images\\small\\${payload.preview.name}`)
             }
 
         },

@@ -32,7 +32,7 @@ class HotelRequest extends FormRequest
             'phone' => [function($value,$attribute,$fail){
                 if(!empty($this->phone)) {
                     $validator = Validator::make(['phone'=>$this->phone],[
-                        'phone' => 'integer'
+                        'phone' => 'digits:11'
                     ]);
                     
                     if ($validator->errors()->messages()) {

@@ -141,3 +141,45 @@ function loadAdminSlider(payload,createState = true) {
 
     return build;
 }
+
+
+function loadAdminBooking(payload,createState = true) {
+    let booking = `
+        <h4>${payload.hotel.name}<i class="pending ml-2 mr-2">${payload.status}</i></h4>
+        <ul class="booking_list">
+    `
+
+
+
+    let start_date = formlateTheDate(payload.start_date);
+    let end_date = formlateTheDate(payload.end_date);
+
+    booking += 
+
+    `   <li><strong>Start date</strong>${start_date}</li>
+        <li><strong>End date</strong>${end_date}</li>
+        <li><strong>Booking details</strong>  People</li>
+        <li><strong>Client</strong>${payload.user.name}</li>
+        <li><strong>Client Contacts</strong> <a>${payload.user.phone}</a> - <a
+        href="mailto:${payload.user.email}">${payload.user.email}</a></li>
+    </ul>
+    <p>
+        <a href="mailto:${payload.user.email}" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a> 
+        <a href="#0" class="btn_1 gray" data-toggle="modal" data-target="#client_detail_modal">
+            <i class="fa fa-fw fa-pencil"></i> Edit Booking</a>
+    </p>
+    <ul class="buttons">
+        <li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
+        <li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+    </ul>
+    `
+
+    if(createState ){
+        booking = `
+        <li class="pl-5">
+        ${booking}
+        </li>
+        `
+    }
+    return booking;
+}

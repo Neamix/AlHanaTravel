@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use App\Models\City;
 use App\Models\Hotel;
 use App\Models\Slider;
@@ -18,7 +19,7 @@ class AdminController extends Controller
 
     public function hotel(Request $request)
     {
-        $hotels = Hotel::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
+        $hotels = Hotel::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 9);
         if($request->ajax()) {
             return $hotels;
         }
@@ -31,7 +32,7 @@ class AdminController extends Controller
 
     public function city(Request $request) 
     {
-        $cities = City::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
+        $cities = City::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 9);
         return view('admin.Pages.city')->with([
             'cities' => $cities
         ]);
@@ -39,7 +40,7 @@ class AdminController extends Controller
 
     public function slider(Request $request) 
     {
-        $sliders = Slider::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
+        $sliders = Slider::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 9);
         return view('admin.Pages.slider')->with([
             'sliders' => $sliders
         ]);
@@ -47,14 +48,17 @@ class AdminController extends Controller
 
     public function user(Request $request) 
     {
-        $users = User::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 10);
+        $users = User::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 9);
         return view('admin.Pages.users')->with([
             'users' => $users
         ]);
     }
 
-    public function book()
+    public function book(Request $request)
     {
-        return view('admin.Pages.book');
+        $booking = Booking::filter($request)->orderBy('id','DESC')->paginate($request['limit'] ?? 9);
+        return view('admin.Pages.book',[
+            'bookings' => $booking
+        ]);
     }
 }

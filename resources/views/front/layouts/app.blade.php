@@ -2,6 +2,7 @@
 <html lang="en" dir="rtl">
 
 <head>
+    <title>{{ env('APP_NAME') }}</title>
     @include('front.layouts.header')
 </head>
 
@@ -12,8 +13,8 @@
         </div><!-- /Page Preload -->
         <div id="logo">
             <a href="index.html">
-                <img src="img/logo.svg" width="150" height="36" alt="" class="logo_normal">
-                <img src="img/logo_sticky.svg" width="150" height="36" alt="" class="logo_sticky">
+                <img src="{{ asset('img/logo.svg') }}" width="150" height="36" alt="" class="logo_normal">
+                <img src="{{ asset('img/logo_sticky.svg') }}" width="150" height="36" alt="" class="logo_sticky">
             </a>
         </div>
     
@@ -27,13 +28,12 @@
         </a>
         <nav id="menu" class="main-menu pr-5">
             <ul>
-                <li><span><a href="#0">الرئيسية</a></li>
-                <li><span><a href="#0">اكتشف رحلاتنا</a></span></li>
+                <li><span><a href="/">الرئيسية</a></li>
+                <li><span><a href="{{ route('search') }}">اكتشف رحلاتنا</a></span></li>
                 @auth
-                <li><span><a href="#0">رحلاتي</a></span></li>
-                <li><span><a href="#0">الصفحة الشخصية</a></span></li>
+                <li><span><a href="{{ route('travels') }}">المفضلة</a></span></li>
+                <li><span><a href="{{ route('profile') }}">الصفحة الشخصية</a></span></li>
                 @endauth
-                <li><span><a href="#0"> تواصل معنا</a></span></li>
                 @guest
                 <li><span><a href="{{ route('login') }}"> تسجيل الدخول</a></span></li>
                 @endguest
@@ -96,7 +96,7 @@
         <div class="container margin_60_35">
             <div class="row">
                 <div class="col-lg-5 col-md-12 p-r-5">
-                    <p><img src="img/logo.svg" width="150" height="36" alt=""></p>
+                    <p><img src="{{ asset('img/logo.svg') }}" width="150" height="36" alt=""></p>
                     <p>شركة سياحة داخليه ( شرم الشيخ - دهب - الغردقه - مرسى علم - الاقصر واسوان - مرسى مطروح - و تنظيم داي يوز)</p>
                     <div class="follow_us">
                         <ul>

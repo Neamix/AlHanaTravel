@@ -4,7 +4,7 @@
 <div class="container" dir="rtl">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card small-card">
                 <div class="card-header w-100 d-flex justify-content-center pt-4 pb-4 border-bottom-none">
                     <img src="img/logo_sticky.svg" width="150" height="36" alt="" class="logo_sticky">
                 </div>
@@ -22,7 +22,7 @@
                         <div class="row mb-3">
 
                             <div class="col-md-12">
-                                <label for="name" class="col-md-4 col-form-label text-md-end"> اسم المستخدم</label>
+                                <label for="name" class="col-form-label text-md-end"> اسم المستخدم</label>
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
@@ -36,7 +36,7 @@
                         <div class="row mb-3">
 
                             <div class="col-md-12">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">البريد الاليكتروني</label>
+                                <label for="email" class="col-form-label text-md-end">البريد الاليكتروني</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')

@@ -33,4 +33,11 @@ class CityController extends Controller
     {
         return $city;
     }
+
+    public function getCityHotel(City $city)
+    {
+        return view('front.city.index',[
+            'city' => $city
+        ]);
+    }
 }

@@ -77,7 +77,7 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $user = User::getUserBelongToEmail($request['email']);
+        $user = User::getUnverfiedUser($request['email'])->first();
 
         if($user)  {
             $user->modifyInstance($request);

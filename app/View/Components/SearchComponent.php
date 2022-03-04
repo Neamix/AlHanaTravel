@@ -13,10 +13,10 @@ class SearchComponent extends Component
      *
      * @return void
      */
-
-    public function __construct()
+    public $city;
+    public function __construct($city = null)
     {
-        
+        $this->city = $city;
     }
 
     /**
@@ -26,9 +26,11 @@ class SearchComponent extends Component
      */
     public function render()
     {
+        $cities = ($this->city) ? [$this->city] : City::all();
+        $hotels = ($this->city) ? Hotel::where('city_id',$this->city->id)->get() : Hotel::paginate(9);
         return view('components.search-component',[
-            'hotels' => Hotel::paginate(9),
-            'cities' => City::all()
+            'hotels' => $hotels,
+            'cities' => $cities,
         ]);
     }
 }

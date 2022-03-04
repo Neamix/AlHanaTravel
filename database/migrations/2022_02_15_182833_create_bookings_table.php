@@ -16,9 +16,12 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('hotel_id');
+            $table->integer('price');
+            $table->integer('places');
             $table->date('start_date');
             $table->date('end_date');
-            $table->enum('status',['pending','approve','cancelled']);
+            $table->enum('status',['pending','approve','canceling','exempted']);
             $table->timestamps();
         });
     }

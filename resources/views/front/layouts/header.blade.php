@@ -5,8 +5,6 @@
 <meta name="author" content="Ansonika">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
-
 <!-- Favicons-->
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
@@ -72,4 +70,4 @@
         background: rgba(204, 204, 204, 1)
     }
 </style>
-@livewireScripts
+@yield('css')

@@ -43,8 +43,18 @@ class UserController extends Controller
         }
     }
 
+    public function likesFilter(Request $request)
+    {
+        return Auth::user()->likesFilter($request)->paginate($request['limit'] ?? 9);
+    }
+
     public function deleteInstance(User $user)
     {
         return $user->deleteInstance();
+    }
+
+    public function travels()
+    {
+        return view('front.users.travels');
     }
 }

@@ -2,10 +2,9 @@
 
 namespace App\View\Components;
 
-use App\Models\Hotel;
 use Illuminate\View\Component;
 
-class HotelsComponent extends Component
+class FavSearch extends Component
 {
     /**
      * Create a new component instance.
@@ -24,9 +23,7 @@ class HotelsComponent extends Component
      */
     public function render()
     {
-        $hotels = Hotel::take(6)->get();
-        return view('components.hotels-component',[
-            'hotels' => $hotels
-        ]);
+        dd('sto');
+        return view('components.fav-search');
     }
 }

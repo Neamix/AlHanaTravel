@@ -17,7 +17,8 @@ class FrontController extends Controller
 
     public function search()
     {
-        return view('front.pages.search')->with('hotels',Hotel::orderBy('id','DESC')->paginate(6));
+        // dd(Hotel::paginate(1));
+        return view('front.pages.search')->with('hotels',Hotel::paginate(1));
     }
 
     public function resendVerify()

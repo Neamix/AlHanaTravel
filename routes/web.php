@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\front\FrontController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserController;
+use App\Models\Booking;
+use App\Models\Hotel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,17 +31,20 @@ Route::group(['middleware' => 'auth'],function(){
 
 
 Route::get('/',[FrontController::class,'index']);
-Route::get('/search',[FrontController::class,'search']);
+Route::get('/search',[FrontController::class,'search'])->name('search');
 
 Route::get('/socialite/{drive}',[UserController::class,'socialite'])->name('socialite');
 Route::get('/socialite/{drive}/redirect',[UserController::class,'socialRedirect'])->name('socialite.redirect');
 
 Route::group(['prefix' => 'hotel'],function(){
     Route::post('/filter',[HotelController::class,'filter'])->name('hotel.filter');
+    Route::get('/{hotel}',[HotelController::class,'index'])->name('hotel.show');
+    Route::post('/reserved',[HotelController::class,'reserved'])->name('hotel.reserved');
 });
 
 Route::group(['prefix' => 'city'],function(){
     Route::post('/filter',[CityController::class,'filter'])->name('city.filter');
+    Route::get('/{city}',[CityController::class,'getCityHotel'])->name('city.hotel');
 });
 
 Route::group(['prefix' => 'slider'],function(){
@@ -48,14 +54,13 @@ Route::group(['prefix' => 'slider'],function(){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'user','middleware' => 'auth'],function(){
-    Route::get('profile',[UserController::class,'profile']);
+    Route::get('likes',[UserController::class,'travels'])->name('travels');
+    Route::post('likesfilter',[UserController::class,'likesFilter'])->name('likes.filter');
+    Route::get('profile',[UserController::class,'profile'])->name('profile');
     Route::post('/like/{hotel}',[UserController::class,'likeHotel'])->name('like.hotel');
     Route::post('profile/edit',[UserController::class,'updatePersonalInfo'])->name('update.personal.info');
 });
 
-Route::get('/test',function(){
-    $send['desc']  = "مرحبا بك في الهنا ترافيل لاستكمال بينات حسابك برجاء الضغط علي الزر الذي بالاسفل";
-    $send['token'] = '12312312';
-    $send['view']  = 'emails.user.verify';
-    return new App\Mail\DefaultEmail($send);
+Route::group(['prefix' => 'booking','middleware' => 'auth'],function(){
+    Route::post('/filter',[BookingController::class,'filter'])->name('booking.filter');
 });

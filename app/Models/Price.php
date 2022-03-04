@@ -10,7 +10,8 @@ class Price extends Model
     use HasFactory;
 
     protected $guarded = [];
-    public function Hotel() {
-        $this->belongsTo(Hotel::class);
+
+    public function hotel() {
+       return $this->belongsTo(Hotel::class);
     }
 }

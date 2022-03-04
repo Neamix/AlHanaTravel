@@ -2,24 +2,12 @@
     <form class="search_form">
         <div class="col-lg-12">
             <div class="row no-gutters custom-search-input-2 inner">
-                <div class="@if(count($cities) > 1) col-lg-6 @else col-lg-10 @endif">
+                <div class="@if(count($cities) > 1) col-lg-10 @else col-lg-10 @endif">
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="عن ماذا تبحث ...." name="name">
                         <i class="icon_search"></i>
                     </div>
                 </div>
-                @if(count($cities) > 1)
-                <div class="col-lg-4">
-                    <select class="wide" name="city_id">
-                        <option value="0">جميع المدن</option>
-                        @foreach($cities as $city)
-                        <option value="{{ $city->id }}"> {{ $city->name }} </option>
-                        @endforeach
-                    </select>
-                </div>
-                @else
-                <input type="hidden" value="{{ $cities[0]->id }}" name="city_id">
-                @endif
                 <div class="col-lg-2">
                     <input type="submit" class="btn_search" value="ابحث">
                 </div>
@@ -38,11 +26,13 @@
 
         <div class="row hotel_container trans position-relative">
         @foreach($hotels as $hotel)
-        <x-box-large-details :hotel="$hotel"></x-box-large-details>
+        <div class="col-md-4">
+            <x-like-box-component :hotel="$hotel"></x-like-box-component>
+        </div>
         @endforeach
         </div>
 
-        @if(count($hotels) > 8)
+        @if(count($hotels) > 9)
         <p class="text-center"><button href="" class="btn_1 rounded add_top_30 load_more loader_key position-relative" loader_name="hotel_more">المزيد <div class="loader small_loader position-relative d-none" data-load="hotel_more"></div> </button></p>
         @endif
         </div>
@@ -73,7 +63,7 @@
         page++
 
         $.ajax({
-            url: `{{ route('hotel.filter') }}?page=${page}`,
+            url: `{{ route('likes.filter') }}?page=${page}`,
             method: 'post',
             data: formData,
             contentType: false,

@@ -8077,7 +8077,7 @@ ul.share-buttons li i {
   color: #fff;
   text-decoration: none;
   padding: 7px 22px !important;
-  border-radius: 20px;
+  border-radius: 3px !important;
   font-size: 12px;
 }
 

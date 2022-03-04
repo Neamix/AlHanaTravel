@@ -9,8 +9,7 @@
             </div>
         </div>
     </section>
-
-    <x-search-component></x-search-component>
+    <x-search-component :city="$city"></x-search-component>
 
 </main>
 <div id="toTop"></div>

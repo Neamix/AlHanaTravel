@@ -24,7 +24,6 @@ class CreateHotelsTable extends Migration
             $table->foreignId('image_id')->nullable();
             $table->string('min_days');
             $table->text('description');
-            $table->text('view_description');
             $table->timestamps();
         });
     }

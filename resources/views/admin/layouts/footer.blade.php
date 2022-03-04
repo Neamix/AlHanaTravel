@@ -3,7 +3,7 @@
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- Core plugin JavaScript-->
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('editor/summernote.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <!-- Page level plugin JavaScript-->
 <script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
 <script src="{{ asset('vendor/datatables/jquery.dataTables.js') }}"></script>

@@ -2,19 +2,20 @@
 
 namespace App\View\Components;
 
-use App\Models\Hotel;
 use Illuminate\View\Component;
 
-class HotelsComponent extends Component
+class LikeBoxComponent extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+
+    public $hotel;
+    public function __construct($hotel)
     {
-        //
+        $this->hotel = $hotel;
     }
 
     /**
@@ -24,9 +25,8 @@ class HotelsComponent extends Component
      */
     public function render()
     {
-        $hotels = Hotel::take(6)->get();
-        return view('components.hotels-component',[
-            'hotels' => $hotels
+        return view('components.like-box-component',[
+            'hotel' => $this->hotel
         ]);
     }
 }

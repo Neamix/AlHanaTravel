@@ -88,11 +88,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function createInstance($data,$additional = [3]) 
     {
         $user = self::firstOrCreate(
-            ['email' => $data->email],
+            ['email' => $data['email']],
             [
-                'email' => $data->email,
-                'phone' => $data->phone ?? null,
-                'name'  => $data->name,
+                'email' => $data['email'],
+                'phone' => $data['phone'] ?? null,
+                'name'  => $data['name'],
                 'password' => $additional['password'] ?? null,
                 'email_verified_at' => $additional['email_verified_at'] ?? null
             ]
@@ -123,6 +123,11 @@ class User extends Authenticatable implements MustVerifyEmail
         ]);
 
         Mailer::verifyUser($this,$token);
+    }
+
+    public function getUnverfiedUser($email)
+    {
+        return self::where('email',$email)->where(['password' => null]);
     }
 
     public function getUserBelongToEmail($email) 
@@ -159,6 +164,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->likes()->where('hotels.id',$hotel_id)->count();
     }
 
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
     public function likes()
     {
         return $this->belongsToMany(Hotel::class,'likes');
@@ -168,5 +178,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->delete();
         return self::validateResult('success',$this);
+    }
+
+    public function likesFilter($request)
+    {
+        return $this->likes()->where('hotels.name','like',"%$request->name%");
     }
 }

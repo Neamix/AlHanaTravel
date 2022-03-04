@@ -1,5 +1,5 @@
 <section class="mt-3">
-@if($cities)
+@if(count($cities))
 <div class="main_title_3">
     <span><em></em></span>
     <h2>المدن التي يكمكنك زيارتها معنا</h2>

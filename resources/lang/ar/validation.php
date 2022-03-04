@@ -145,6 +145,19 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email' => [
+            'required' => 'يجب ادخال بريد اليكتروني',
+        ],
+        'name' => [
+            'required' => 'يجب ادخال الاسم'
+        ],
+        'phone' => [
+            'required' => 'يجب ادخال هانف',
+            'digits' => 'يجب ادخال رقم هاتف مكون من :digits رقم',
+        ],
+        'dates' => [
+            'required' => 'يجب ادخال تاريخ بدء و نهائيه صالحين'
+        ]
     ],
 
     /*

@@ -47,6 +47,7 @@ class Hotel extends Model
         if(! empty($data->main_image)) {
             
             $dimintionsArray = [
+                'large' => '1600X1067',
                 'small' => '500X370',
             ];
 
@@ -83,18 +84,17 @@ class Hotel extends Model
     }
 
     public function scopeFilter($query,$filter) {
-        if($filter->name) {
+        if(!empty($filter->name)) {
             $query->where('name','like',"%$filter->name%");
         }
 
-        if($filter->city_id) {
+        if(!empty($filter->city_id)) {
             $query->where('city_id',$filter->city_id);
         }
 
-        if($filter->stars) {
+        if(!empty($filter->stars)) {
             $query->where('stars',$filter->stars);
         }
-
     }
 
     public function deleteInstance()

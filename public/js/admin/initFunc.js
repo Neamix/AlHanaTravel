@@ -2,7 +2,7 @@ var loader_name;
 
 $(document).on('click','.loader_key',function(){
     loader_name = $(this).attr('loader_name');
-    console.log($(`.loader[data-load="${loader_name}"]`),loader_name);
+    console.log($(`.loader[data-load="${loader_name}"]`).length,loader_name);
     $(`.loader[data-load="${loader_name}"]`).removeClass('d-none')
 });
 
@@ -16,7 +16,14 @@ $.ajaxSetup({
     },
 
     complete: () => {
-        console.log(loader_name);
+        console.log($(`.loader[data-load="${loader_name}"]`));
+        $('.summernote').each(function(){
+            $(this).summernote('reset');
+        })
+        $(`.loader[data-load="${loader_name}"]`).addClass('d-none');
+    },
+
+    error: () => {
         $(`.loader[data-load="${loader_name}"]`).addClass('d-none');
     }
 });
@@ -48,13 +55,13 @@ $(document).on('click','.hotel_like',function(){
     let hotel_id = $(this).attr('data_id');
     console.log(hotel_id);
     $.ajax({
-        url: `user/like/${hotel_id}`,
+        url: `/user/like/${hotel_id}`,
         type: 'post',
         success: function() {
             console.log('here');
         }
     })
-})
+});
 
 $(document).on('click','.edit_btn',function(){
     let modal_class = $(this).attr('modal_class');
@@ -69,7 +76,7 @@ $(document).on('click','.edit_btn',function(){
                 let val = modal[element];
                 let input_class = $(`${modal_class} .input_${element}`);
                 let select_class = $(`${modal_class} .select_${element}`)
-                console.log(element == 'description');
+                console.log(`${modal_class} .input_${element}`);
                 if(element == 'text' || element == 'description') {
                     let getSummerParent = $(modal_class);
                     let getSummer = getSummerParent.find(`.input_${element}`);
@@ -124,3 +131,13 @@ $(document).on('click','.edit_btn',function(){
     })
     
 });
+
+function formlateTheDate($date) {
+    let date = new Date($date);
+    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let day  = date.getDate();
+
+    return day + ' '  +months[month] + ' ' +year;
+}

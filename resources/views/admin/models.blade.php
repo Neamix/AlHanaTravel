@@ -175,6 +175,46 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="edit_booking" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true">
+    <div class="modal-dialog wide"  role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="client_detail_modalLabel">Edit booking</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="edit_booking" data="edit">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="form-control input_price" value="" name="price">
+                        <p class="error error_name"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>start date</label>
+                        <input type="date" class="form-control input_start_date" value="" name="start_date">
+                        <p class="error error_name"></p>
+                    </div>
+                    <div class="form-group">
+                        <label>end date</label>
+                        <input type="date" class="form-control input_end_date" value="" name="end_date">
+                        <p class="error error_name"></p>
+                    </div>
+                    <input type="hiddin" class="input_id" name="id">
+                    <div class="modal-footer">
+                        <button class="btn btn-primary d-flex loader_key" href="#0" loader_name="edit_book_loader">
+                            <div class="loader d-none" data-load="edit_book_loader">
+                                <span></span>
+                            </div>
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="add_new_hotel" tabindex="-1" role="dialog" aria-labelledby="client_detail_modalLabel" aria-hidden="true">
     <div class="modal-dialog wide"  role="document">
         <div class="modal-content">
@@ -206,13 +246,6 @@
                             <p class="error error_email"></p>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="summernote input_description" name="description" class="input_text" value=""></textarea>
-                            <p class="error error_description"></p>
-                        </div>
-                    </div>
                 </div>
                 <!-- /Row -->
                 <div class="row">
@@ -240,7 +273,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>View Description</label>
-                            <textarea class="form-control date-pick input_view_desc" value="" name="view_desc"></textarea>
+                            <textarea class="form-control date-pick input_view_description" value="" name="view_description"></textarea>
                             <p class="error error_view_description"></p>
                         </div>
                     </div>
@@ -351,7 +384,12 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" href="#0">Save</button>
+                        <button class="btn btn-primary loader_key" loader_name="add_new_city" href="#0">
+                            Save
+                        <div class="loader d-none" data-load="add_new_city">
+                            <span></span>
+                        </div>
+                        </button>
                     </div>
                 </form>
             </div>

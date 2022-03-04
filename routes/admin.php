@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\SliderController;
@@ -37,10 +38,11 @@ Route::group(['prefix' => 'slider'],function(){
     Route::post('/delete/{slider}',[SliderController::class,'delete'])->name('slider.delete');
 });
 
-Route::group(['prefix' => 'user'],function(){
-    Route::get('/',[AdminController::class,'hotel'])->name('user.index');
-    Route::get('/{user}',[UserController::class,'getHotel'])->name('user.get');
-    Route::post('/delete/{user}',[UserController::class,'delete'])->name('user.delete');
+Route::group(['prefix' => 'book'],function(){
+    Route::get('/',[AdminController::class,'book'])->name('book.index');
+    Route::get('/{booking}',[BookingController::class,'getBooking'])->name('book.get');
+    Route::post('/update',[BookingController::class,'updateBooking'])->name('book.update');
+    Route::post('/status/{booking}/{status}',[BookingController::class,'status'])->name('booking.status');
 });
 
 

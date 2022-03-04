@@ -124,13 +124,28 @@
     min-height: 100vh;
 }
 
+.no_border {
+    border: none !important;
+}
+
 /* loader */
 .trans {
     transition: all .3s linear;
 }
 
+.loader_key {
+    min-width: 150px;
+}
+
+.small_loader {
+    width: 20px;
+    height: 20px;
+    left: 34%;
+    margin-top: -17px;
+    position: absolute !important;
+}
+
 .main_loader {
-    display: none;
 }
 
 .push_and_hide {
@@ -162,4 +177,24 @@
 
 .error {
     color: #e9565c;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.user-travels {
+    min-height: 80vh;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.small-card {
+    max-width: 409px;
+    box-shadow: -1px -2px 20px #f3f3f3;
+}
+
+.small-card label {
+    font-size: 11px;
+    font-weight: bold;
 }

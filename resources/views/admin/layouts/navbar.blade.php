@@ -21,30 +21,33 @@
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
                 <a class="nav-link" href="{{ route('city.index') }}">
-                    <i class="fa fa-fw fa-calendar-check-o"></i>
-                    <span class="nav-link-text">Cities <span class="badge badge-pill badge-primary">6 New</span></span>
+                    <i class="fa fa-building" aria-hidden="true"></i>
+                    <span class="nav-link-text">Cities </span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
                 <a class="nav-link" href="{{ route('slider.index') }}">
-                    <i class="fa fa-fw fa-calendar-check-o"></i>
-                    <span class="nav-link-text">Slider <span class="badge badge-pill badge-primary">6 New</span></span>
+                     <i class="fa fa-building" aria-hidden="true"></i>
+                    <span class="nav-link-text">Slider</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My listings">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings">
-                    <i class="fa fa-fw fa-list"></i>
-                    <span class="nav-link-text">My listings</span>
+                    <i class="fa fa-bed" aria-hidden="true"></i>
+                    <span class="nav-link-text">Reservation</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMylistings">
                     <li>
-                        <a href="listings.html">Pending <span class="badge badge-pill badge-primary">6</span></a>
+                        <a href="{{ route('book.index',['status' => 'pending']) }}">Pending <span class="badge badge-pill badge-primary">6</span></a>
                     </li>
                     <li>
-                        <a href="listings.html">Active <span class="badge badge-pill badge-success">6</span></a>
+                        <a href="{{ route('book.index',['status' => 'approve']) }}">Approved <span class="badge badge-pill badge-success">6</span></a>
                     </li>
                     <li>
-                        <a href="listings.html">Expired <span class="badge badge-pill badge-danger">6</span></a>
+                        <a href="{{ route('book.index',['status' => 'expired']) }}">Expired <span class="badge badge-pill badge-danger">6</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ route('book.index',['status' => 'cancelling']) }}">Cancelling request <span class="badge badge-pill badge-danger">6</span></a>
                     </li>
                 </ul>
             </li>
