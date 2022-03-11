@@ -1,5 +1,7 @@
 @extends('front.layouts.app')
-
+@section('title')
+{{ $hotel->name }}
+@endsection
 
 @section('css')
 <style>

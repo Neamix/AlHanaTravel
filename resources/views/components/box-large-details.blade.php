@@ -2,7 +2,7 @@
     <a href="{{ route('hotel.show',['hotel' => $hotel->id]) }}" class="grid_item">
         <figure>
             <div class="score"><strong>{{ $hotel->city->name }}</strong></div>
-            <img src="@if($hotel->preview) {{ asset('images/small/'.$hotel->preview->name) }} @else {{ asset('img/no-image') }} @endif" class="img-fluid" alt="">
+            <img src="@if($hotel->preview) {{ asset('images/small/'.$hotel->preview->name) }} @else {{ asset('img/no-image') }} @endif" class="img-fluid" alt="{{ $hotel->name }}">
             <div class="info">
                 <div class="cat_star">
                     @for($i=1;$i <= $hotel->stars;$i++)

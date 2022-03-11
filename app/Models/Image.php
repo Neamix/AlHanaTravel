@@ -2,21 +2,32 @@
 
 namespace App\Models;
 
-use App\Traits\FileSystem;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ImageResize;
-use File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class Image extends Model
 {
-    use HasFactory,FileSystem;
+    use HasFactory;
 
     protected $guarded = [];
 
     static function testImage($model) {
         self::createDirectory($model,true,"medium");
+    }
+
+    static function deleteImage($file) {
+        $dimintions = ['large','medium','small'];
+
+        foreach($dimintions as $dimintion) {
+
+            $image_path = public_path() . '/images/' .$dimintion . '/' . $file;
+            if(File::exists($image_path)) {
+                unlink($image_path);
+            }
+        }
     }
 
     static function storeImages($file,$dimintionsArray,$model,$use_for = null) {

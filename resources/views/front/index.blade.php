@@ -1,5 +1,9 @@
 @extends('front.layouts.app')
 
+@section('title')
+الرئيسية
+@endsection
+
 @section('content')
 <div id="page">
 		<!-- /header -->

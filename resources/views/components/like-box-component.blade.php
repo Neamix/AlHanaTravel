@@ -4,7 +4,7 @@
             @auth
             <a class="wish_bt hotel_like @if(Auth::user()->isLikedHotel($hotel->id)) liked @endif" data_id="{{$hotel->id}}"></a>
             @endauth
-            <a href="{{ route('hotel.show',['hotel'=>$hotel->id]) }}"><img src="{{ asset('images/small/'.$hotel->preview->name) }}" class="img-fluid" alt="" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
+            <a href="{{ route('hotel.show',['hotel'=>$hotel->id]) }}"><img src="{{ asset('images/small/'.$hotel->preview->name) }}" class="img-fluid" alt="{{ $hotel->name }}" width="800" height="533"><div class="read_more"><span>Read more</span></div></a>
             <small>{{ $hotel->city->name }}</small>
         </figure>
         <div class="wrapper">

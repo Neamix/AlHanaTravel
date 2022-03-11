@@ -6,6 +6,7 @@ use App\Jobs\ImageProcessing;
 use App\Traits\validationTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class Hotel extends Model
@@ -75,9 +76,15 @@ class Hotel extends Model
     public function removeGallary(array $images_ids) {
 
         foreach($images_ids as $image_id) {
-            $image_name = Image::where('id',$image_id)->pluck('name')->toArray();
-            $images_ids_with_name = Image::where('name',$image_name)->pluck('id')->toArray();
-            $this->getGallary()->detach($images_ids_with_name);  
+            $image_array = Image::where('id',$image_id)->first();
+
+            if($image_array) {
+                $image_name = $image_array['name'];
+                $images_ids_with_name = Image::where('name',$image_name)->pluck('id')->toArray();
+                $this->getGallary()->detach($images_ids_with_name); 
+                Image::deleteImage($image_name);
+            }
+    
         }
 
         return self::validateResult('success',$this->getGallary()->get());
@@ -117,5 +124,17 @@ class Hotel extends Model
 
     public function city() {
         return $this->belongsTo(City::class);
+    }
+
+    public function getGallary() {
+        return $this->belongsToMany(Image::class)->where('use_for','gallary');
+    }
+
+    public function keywords() {
+        return $this->morphMany(Seo::class,'seoable')->where('type','keyword');
+    }
+
+    public function description() {
+        return $this->morphMany(Seo::class,'seoable')->where('type','description');
     }
 }

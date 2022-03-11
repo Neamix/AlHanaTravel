@@ -1,5 +1,9 @@
 @extends('front.layouts.app')
 
+@section('title')
+اكتشف
+@endsection
+
 @section('content')
 <main>
     <section class="hero_in hotels" style="background-image:url('img/wallpaper.jpg');">

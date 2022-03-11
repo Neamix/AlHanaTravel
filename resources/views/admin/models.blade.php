@@ -153,7 +153,7 @@
                 <form class="delete_form" data="delete">
                     <input type="hidden" class="del_hotel_id" value="">
                     <div class="w-100 d-flex justify-content-center">
-                        <img src="{{ asset('img/delete.png') }}">
+                        <img src="{{ asset('img/delete.png') }}" alt="delete">
                     </div>
                     <p class="del_warning text-center">
                         Greating Hoody, Are you sure that you want to delete this text ? we just make sure because this data wont be able to revive

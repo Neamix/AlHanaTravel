@@ -2,7 +2,7 @@
 <html lang="en" dir="rtl">
 
 <head>
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ env('APP_NAME') }} | @yield('title')</title>
     @include('front.layouts.header')
 </head>
 
