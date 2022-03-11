@@ -52,6 +52,10 @@ class Hotel extends Model
                 'small' => '500X370',
             ];
 
+            if($hotel->preview) {
+                Image::deleteImage($hotel->preview->name);
+            }
+
             Image::storePreview($data->main_image,$dimintionsArray,$hotel);
         }
 

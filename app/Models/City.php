@@ -22,6 +22,10 @@ class City extends Model
         );
 
         if($data->preview) {
+            if($city->image) {
+                Image::deleteImage($city->image->name);
+            }
+
             Image::storePreview($data->preview,['small' => '420X267','large' => '1600X1060'],$city);
         }
 
