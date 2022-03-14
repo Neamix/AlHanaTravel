@@ -70,7 +70,10 @@ $('.edit_form,.add_form').on('submit',function(e){
             });
             console.log(event);
             if(create_state) {
-                $('.list_general').prepend(loadAdminHotel(payload,create_state))
+                $('.list_general').prepend(loadAdminHotel(payload,create_state));
+                $('.summernote').each(function(){
+                    $(this).summernote('reset');
+                })
             } else {
                 $(`li.hotel_element#${payload.id}`).html('').append(loadAdminHotel(payload,create_state))
             }

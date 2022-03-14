@@ -31,6 +31,9 @@
                     $('.list_general .slider_list').append(loadAdminSlider(payload))
                     $('.empty_text').remove();
                     $(this).trigger('reset');
+                    $('.summernote').each(function(){
+                        $(this).summernote('reset');
+                    })
                 } else {
                     $(`.list_general .slider_element#${payload.id}`).html('').prepend(loadAdminSlider(payload,create_state))
                 }
