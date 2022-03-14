@@ -78,7 +78,7 @@
                             </Div>
                         </div>
                         <div class="col-md-4">
-                            <div class="add_new_price btn_1 gray mt-3" form_class="edit_form"><i class="fa fa-plus"></i>Add new price</div>
+                            <div class="add_new_price btn_1 gray mt-3" form_class=".edit_form"><i class="fa fa-plus"></i>Add new price</div>
                         </div>
                         <table class="table mt-3 price_table">
                             <tr>
