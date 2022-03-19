@@ -2,10 +2,10 @@
     <a href="adventure-detail.html" class="grid_item_adventure">
         <figure>
             <div class="score"><strong><i class="fa fa-star mr-2" aria-hidden="true"></i>{{ $hotel->stars }}</strong></div>
-            <img loading="lazy" src="{{ asset('images/small/'.$hotel->preview->name) }}" class="img-fluid" alt="{{ $hotel->name }}" >
+            <img loading="lazy" src="{{ asset('images/medium/'.$hotel->preview->name) }}" class="img-fluid" alt="{{ $hotel->name }}" >
             <div class="info">
-                <em>2 days in Canada</em>
-                <h3>Horseback ride through Valencia</h3>
+                <em>{{ $hotel->min_days }} ايام في {{ $hotel->city->name }}</em>
+                <h3>{{ $hotel->name }}</h3>
             </div>
         </figure>
     </a>
