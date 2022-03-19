@@ -2,7 +2,6 @@ var loader_name;
 
 $(document).on('click','.loader_key',function(){
     loader_name = $(this).attr('loader_name');
-    console.log($(`.loader[data-load="${loader_name}"]`).length,loader_name);
     $(`.loader[data-load="${loader_name}"]`).removeClass('d-none')
 });
 
@@ -16,7 +15,6 @@ $.ajaxSetup({
     },
 
     complete: () => {
-        console.log($(`.loader[data-load="${loader_name}"]`));
         $(`.loader[data-load="${loader_name}"]`).addClass('d-none');
     },
 
@@ -50,12 +48,10 @@ $('.delete_form').on('submit',function(e){
 
 $(document).on('click','.hotel_like',function(){
     let hotel_id = $(this).attr('data_id');
-    console.log(hotel_id);
     $.ajax({
         url: `/user/like/${hotel_id}`,
         type: 'post',
         success: function() {
-            console.log('here');
         }
     })
 });
@@ -64,7 +60,6 @@ $(document).on('click','.edit_btn',function(){
     let modal_class = $(this).attr('modal_class');
     let modal = $(this).attr('modal');
     let modal_id = $(this).attr('modal_id');
-    console.log(modal_id);
     $.ajax({
         url: `${modal}/${modal_id}`,
         success: (modal) => {
@@ -73,11 +68,9 @@ $(document).on('click','.edit_btn',function(){
                 let val = modal[element];
                 let input_class = $(`${modal_class} .input_${element}`);
                 let select_class = $(`${modal_class} .select_${element}`)
-                console.log(`${modal_class} .input_${element}`);
                 if(element == 'text' || element == 'description') {
                     let getSummerParent = $(modal_class);
                     let getSummer = getSummerParent.find(`.input_${element}`);
-                    console.log(getSummer);
                     getSummerParent.find('.note-editable').html(val);
                     getSummer.val(val);
                 }
@@ -85,7 +78,7 @@ $(document).on('click','.edit_btn',function(){
                 select_class.val(val);
             }
 
-
+            
             //add hotel prices quotes 
             if( modal_class == '.edit_form'  ) {
                 let prices = modal.prices;
@@ -99,17 +92,14 @@ $(document).on('click','.edit_btn',function(){
                         insertPrice(prices[i]['quota'],prices[i]['price']);
                     }
                     prices.forEach((price) => {
-                        console.log(0);
-                    
+
                     })
                 }
             } else if ( modal_class == '.gallary_show' ) {
-                console.log(modal);
                 let gallary_images = modal.images;
                 
                 $('.hotel_images_recent').html('');
 
-                console.log(gallary_images,'here');
 
                 gallary_images.forEach(image => {
                     $('.hotel_images_recent').append(`

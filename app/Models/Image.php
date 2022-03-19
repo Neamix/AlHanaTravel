@@ -34,7 +34,7 @@ class Image extends Model
         $image = Storage::disk('public')->get($file);
         $name = uniqid() . '.png';
         $idsArray = [];
-        $dir = public_path() . "\\images";
+        $dir = public_path() . "/images";
 
         $imageInstance = self::create([
             'name' => $name,
@@ -46,7 +46,7 @@ class Image extends Model
         foreach($dimintionsArray as $key => $dimintion)
         {
             $dimintion = explode('X',$dimintion);
-            self::resize($image,$dimintion)->save($dir."\\$key\\".$name);
+            self::resize($image,$dimintion)->save($dir."/$key/".$name);
             array_push($idsArray,$imageInstance->id);
         }
         
@@ -55,7 +55,7 @@ class Image extends Model
 
     static function storePreview($file,$dimintionsArray,$model) {
         $name = uniqid() . '.png';  
-        $dir = public_path() . "\\images"; 
+        $dir = public_path() . "/images"; 
 
         $imageInstance = self::create([
             'name' => $name,
@@ -66,7 +66,7 @@ class Image extends Model
 
         foreach($dimintionsArray as  $key => $dimintionValue) {
             $dimintions = explode('X',$dimintionValue);
-            self::resize($image,$dimintions)->save($dir."\\$key\\".$name);
+            self::resize($image,$dimintions)->save($dir."/$key/".$name);
         }
             
         $model->image_id =  $imageInstance->id;

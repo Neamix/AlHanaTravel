@@ -13,8 +13,16 @@
             <span class="price">ابتداء من <strong>{{ $hotel->prices[0]->price }}</strong> /{{ $hotel->prices[0]->quota }}</span>
         </div>
         <ul>
-            <li><i class="icon_clock_alt"></i>{{ $hotel->min_day }}</li>
-            <li><div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div></li>
+            <li><i class="icon_clock_alt"></i> {{ $hotel->min_days }} ليالي 4 أيام </li>
+            <li>
+                <div class="score">
+                    <strong>
+                        @for($i=1;$i <= $hotel->stars;$i++)
+                            <i class="icon_star"></i>
+                        @endfor
+                    </strong>
+                </div>
+            </li>
         </ul>
     </div>
 </div>
