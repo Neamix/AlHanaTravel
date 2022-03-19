@@ -32,7 +32,7 @@ class Image extends Model
 
     static function storeImages($file,$dimintionsArray,$model,$use_for = null) {
         $image = Storage::disk('public')->get($file);
-        $name = uniqid() . '.png';
+        $name = uniqid() . $file->extenstion();
         $idsArray = [];
         $dir = public_path() . "/images";
 
@@ -54,7 +54,7 @@ class Image extends Model
     }
 
     static function storePreview($file,$dimintionsArray,$model) {
-        $name = uniqid() . '.png';  
+        $name = uniqid() .'.' . $file->extension();  
         $dir = public_path() . "/images"; 
 
         $imageInstance = self::create([
