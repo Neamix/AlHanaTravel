@@ -33,7 +33,8 @@
 
 <!-- YOUR CUSTOM CSS -->
 <link href="{{ asset('css/front/custom.css') }}" rel="stylesheet">
-<link href="{{ asset('js/modernizr_slider.js') }}" rel="stylesheet">
+<link href="{{ asset('js/front/modernizr_slider.js') }}" rel="stylesheet">
+
 
 <style type="text/css">
     .tiny_bullet_slider .tp-bullet:before {

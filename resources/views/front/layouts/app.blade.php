@@ -12,9 +12,9 @@
             <div data-loader="circle-side"></div>
         </div><!-- /Page Preload -->
         <div id="logo">
-            <a href="index.html" aria-label="Right Align">
-                <img src="{{ asset('img/logo.svg') }}" width="150" height="36" alt="avg_logo" class="logo_normal">
-                <img src="{{ asset('img/logo_sticky.svg') }}" width="150" height="36" alt="logo" class="logo_sticky">
+            <a href="/">
+                <img src="{{ asset('img/logo.svg') }}" width="150" height="36" alt="" class="logo_normal">
+                <img src="{{ asset('img/logo_sticky.svg') }}" width="150" height="36" alt="" class="logo_sticky">
             </a>
         </div>
     

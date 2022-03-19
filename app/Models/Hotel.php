@@ -49,7 +49,8 @@ class Hotel extends Model
             
             $dimintionsArray = [
                 'large' => '1600X1067',
-                'small' => '500X400',
+                'medium' => '500X500',
+                'small' => '300X300',
             ];
 
             if($hotel->preview) {
