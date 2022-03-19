@@ -46,6 +46,8 @@ Route::group(['prefix' => 'book'],function(){
 });
 
 
+
+
 Route::get('/test',function(Request $request){
    dd( Hotel::filter($request)->get());
 });

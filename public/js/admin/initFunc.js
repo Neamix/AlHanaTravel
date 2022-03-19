@@ -15,6 +15,9 @@ $.ajaxSetup({
     },
 
     complete: () => {
+        $('.summernote').each(function(){
+            $(this).summernote('reset');
+        })
         $(`.loader[data-load="${loader_name}"]`).addClass('d-none');
     },
 

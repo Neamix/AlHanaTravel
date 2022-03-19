@@ -13,6 +13,6 @@ class Seo extends Model
     {
         $keywordsArray = explode(',',$payload->keyword);
         
-        
+        $model->seo->associate($keywordsArray);
     }
 }

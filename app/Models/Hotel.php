@@ -49,7 +49,7 @@ class Hotel extends Model
             
             $dimintionsArray = [
                 'large' => '1600X1067',
-                'small' => '500X370',
+                'small' => '500X400',
             ];
 
             if($hotel->preview) {
@@ -141,4 +141,8 @@ class Hotel extends Model
     public function description() {
         return $this->morphMany(Seo::class,'seoable')->where('type','description');
     }
-}
+
+    public function seo() {
+        return $this->morphOne(Seo::class);
+    }
+ }

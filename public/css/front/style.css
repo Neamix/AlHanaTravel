@@ -5990,6 +5990,7 @@ ul.list_3 li:before {
 a.grid_item_adventure {
   display: block;
   margin-bottom: 25px;
+  height: 326px;
 }
 a.grid_item_adventure .info {
   position: absolute;

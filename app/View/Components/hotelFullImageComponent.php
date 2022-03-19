@@ -5,16 +5,17 @@ namespace App\View\Components;
 use App\Models\Hotel;
 use Illuminate\View\Component;
 
-class PopularHotelSliderComponent extends Component
+class hotelFullImageComponent extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+
+    public function __construct(Hotel $hotel)
     {
-        //
+        $this->hotel = $hotel;
     }
 
     /**
@@ -24,9 +25,6 @@ class PopularHotelSliderComponent extends Component
      */
     public function render()
     {
-        $hotels = Hotel::paginate(10);
-        return view('components.popular-hotel-slider-component',[
-            'hotels' => $hotels
-        ]);
+        return view('components.hotel-full-image-component',['hotel' => $this->hotel]);
     }
 }
